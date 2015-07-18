@@ -12,11 +12,11 @@
 		1C2A5BD01B5AE96600E8D410 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C2A5BCF1B5AE96600E8D410 /* Images.xcassets */; };
 		1C2A5BD31B5AE96600E8D410 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C2A5BD11B5AE96600E8D410 /* LaunchScreen.xib */; };
 		1C2A5BDF1B5AE96600E8D410 /* AngelHacksCaitlynTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2A5BDE1B5AE96600E8D410 /* AngelHacksCaitlynTests.swift */; };
-		1C2A5BE91B5AEBCF00E8D410 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2A5BE81B5AEBCF00E8D410 /* TabBarViewController.swift */; };
-		1C2A5BEB1B5AEC1D00E8D410 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2A5BEA1B5AEC1D00E8D410 /* MapViewController.swift */; };
 		1C2A5BED1B5AEC3A00E8D410 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2A5BEC1B5AEC3A00E8D410 /* MapKit.framework */; };
 		1C2A5BEF1B5AEC4000E8D410 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2A5BEE1B5AEC4000E8D410 /* CoreLocation.framework */; };
 		1C2A5BF61B5AF3C500E8D410 /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2A5BF51B5AF3C500E8D410 /* PinAnnotation.swift */; };
+		50F292F71B5B00770081D8B7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F292F51B5B00770081D8B7 /* MapViewController.swift */; };
+		50F292F81B5B00770081D8B7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F292F61B5B00770081D8B7 /* TabBarViewController.swift */; };
 		CD73A14668966D885219BE2E /* Pods_AngelHacksCaitlyn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384331175755F61F75F0E83B /* Pods_AngelHacksCaitlyn.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -40,13 +40,13 @@
 		1C2A5BD81B5AE96600E8D410 /* AngelHacksCaitlynTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AngelHacksCaitlynTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C2A5BDD1B5AE96600E8D410 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C2A5BDE1B5AE96600E8D410 /* AngelHacksCaitlynTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngelHacksCaitlynTests.swift; sourceTree = "<group>"; };
-		1C2A5BE81B5AEBCF00E8D410 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		1C2A5BEA1B5AEC1D00E8D410 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		1C2A5BEC1B5AEC3A00E8D410 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1C2A5BEE1B5AEC4000E8D410 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1C2A5BF51B5AF3C500E8D410 /* PinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
 		25B0015A37F0052633FBB9DB /* Pods-AngelHacksCaitlyn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AngelHacksCaitlyn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AngelHacksCaitlyn/Pods-AngelHacksCaitlyn.debug.xcconfig"; sourceTree = "<group>"; };
 		384331175755F61F75F0E83B /* Pods_AngelHacksCaitlyn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AngelHacksCaitlyn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50F292F51B5B00770081D8B7 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		50F292F61B5B00770081D8B7 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E6F9973A383485B7774A5850 /* Pods-AngelHacksCaitlyn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AngelHacksCaitlyn.release.xcconfig"; path = "Pods/Target Support Files/Pods-AngelHacksCaitlyn/Pods-AngelHacksCaitlyn.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,8 +94,7 @@
 		1C2A5BC51B5AE96600E8D410 /* AngelHacksCaitlyn */ = {
 			isa = PBXGroup;
 			children = (
-				1C2A5BEA1B5AEC1D00E8D410 /* MapViewController.swift */,
-				1C2A5BE81B5AEBCF00E8D410 /* TabBarViewController.swift */,
+				50F292F41B5B00770081D8B7 /* View Controllers */,
 				1C2A5BF41B5AF3AE00E8D410 /* Model */,
 				1C2A5BC81B5AE96600E8D410 /* AppDelegate.swift */,
 				1C2A5BCC1B5AE96600E8D410 /* Main.storyboard */,
@@ -148,6 +147,15 @@
 				1C2A5BF51B5AF3C500E8D410 /* PinAnnotation.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		50F292F41B5B00770081D8B7 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				50F292F51B5B00770081D8B7 /* MapViewController.swift */,
+				50F292F61B5B00770081D8B7 /* TabBarViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		9D1FBC6A62694ECBE1A1A0FB /* Pods */ = {
@@ -310,10 +318,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50F292F81B5B00770081D8B7 /* TabBarViewController.swift in Sources */,
 				1C2A5BF61B5AF3C500E8D410 /* PinAnnotation.swift in Sources */,
-				1C2A5BE91B5AEBCF00E8D410 /* TabBarViewController.swift in Sources */,
+				50F292F71B5B00770081D8B7 /* MapViewController.swift in Sources */,
 				1C2A5BC91B5AE96600E8D410 /* AppDelegate.swift in Sources */,
-				1C2A5BEB1B5AEC1D00E8D410 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
