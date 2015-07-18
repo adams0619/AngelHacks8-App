@@ -8,7 +8,7 @@
         <!--Air-pump-->
         <scene sceneID="pL8-eg-GIN">
             <objects>
-                <viewController id="Xwq-GT-QEj" userLabel="Air-pump" sceneMemberID="viewController">
+                <viewController id="Xwq-GT-QEj" userLabel="Air-pump" customClass="AirPumpViewController" customModule="AngelHacksCaitlyn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="a7J-TR-bxA"/>
                         <viewControllerLayoutGuide type="bottom" id="SUv-WR-8UM"/>
@@ -30,6 +30,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Air Pumps" image="pump-tab" id="bvv-Ln-fEw"/>
+                    <connections>
+                        <outlet property="mapView" destination="YEo-Yb-Z78" id="fSP-yr-e9L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Jg-B5-BTm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -15,6 +15,7 @@
 		1C2A5BED1B5AEC3A00E8D410 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2A5BEC1B5AEC3A00E8D410 /* MapKit.framework */; };
 		1C2A5BEF1B5AEC4000E8D410 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2A5BEE1B5AEC4000E8D410 /* CoreLocation.framework */; };
 		1C2A5BF61B5AF3C500E8D410 /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2A5BF51B5AF3C500E8D410 /* PinAnnotation.swift */; };
+		1CE8DA3B1B5B16EE008FDC04 /* AirPumpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE8DA3A1B5B16EE008FDC04 /* AirPumpViewController.swift */; };
 		50F292F71B5B00770081D8B7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F292F51B5B00770081D8B7 /* MapViewController.swift */; };
 		50F292F81B5B00770081D8B7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F292F61B5B00770081D8B7 /* TabBarViewController.swift */; };
 		CD73A14668966D885219BE2E /* Pods_AngelHacksCaitlyn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384331175755F61F75F0E83B /* Pods_AngelHacksCaitlyn.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -43,6 +44,7 @@
 		1C2A5BEC1B5AEC3A00E8D410 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1C2A5BEE1B5AEC4000E8D410 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1C2A5BF51B5AF3C500E8D410 /* PinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
+		1CE8DA3A1B5B16EE008FDC04 /* AirPumpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirPumpViewController.swift; sourceTree = "<group>"; };
 		25B0015A37F0052633FBB9DB /* Pods-AngelHacksCaitlyn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AngelHacksCaitlyn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AngelHacksCaitlyn/Pods-AngelHacksCaitlyn.debug.xcconfig"; sourceTree = "<group>"; };
 		384331175755F61F75F0E83B /* Pods_AngelHacksCaitlyn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AngelHacksCaitlyn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F292F51B5B00770081D8B7 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				50F292F51B5B00770081D8B7 /* MapViewController.swift */,
 				50F292F61B5B00770081D8B7 /* TabBarViewController.swift */,
+				1CE8DA3A1B5B16EE008FDC04 /* AirPumpViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50F292F81B5B00770081D8B7 /* TabBarViewController.swift in Sources */,
+				1CE8DA3B1B5B16EE008FDC04 /* AirPumpViewController.swift in Sources */,
 				1C2A5BF61B5AF3C500E8D410 /* PinAnnotation.swift in Sources */,
 				50F292F71B5B00770081D8B7 /* MapViewController.swift in Sources */,
 				1C2A5BC91B5AE96600E8D410 /* AppDelegate.swift in Sources */,
