@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IKm-2d-RVD">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Item 2-->
+        <scene sceneID="pL8-eg-GIN">
+            <objects>
+                <viewController id="Xwq-GT-QEj" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a7J-TR-bxA"/>
+                        <viewControllerLayoutGuide type="bottom" id="SUv-WR-8UM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7LU-PG-zZ5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="bvv-Ln-fEw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Jg-B5-BTm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="709" y="330"/>
+        </scene>
+        <!--MapViewController-->
+        <scene sceneID="J8A-4I-t9p">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xjn-IE-xbj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="upe-7U-U9X" userLabel="MapViewController" customClass="MapViewController" customModule="AngelHacksCaitlyn" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eLf-sT-y4u"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Pq-h2-p41"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="49m-SK-HEk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="STD-ym-n8y">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="STD-ym-n8y" secondAttribute="bottom" id="TBQ-ig-5X9"/>
+                            <constraint firstItem="STD-ym-n8y" firstAttribute="top" secondItem="49m-SK-HEk" secondAttribute="topMargin" id="fKD-0h-Af5"/>
+                            <constraint firstItem="STD-ym-n8y" firstAttribute="leading" secondItem="49m-SK-HEk" secondAttribute="leadingMargin" constant="-16" id="k86-2A-XoR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="STD-ym-n8y" secondAttribute="trailing" constant="-16" id="sth-oN-NFu"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="BaN-T7-Sg1"/>
+                    <connections>
+                        <outlet property="mapView" destination="STD-ym-n8y" id="aOI-nr-HUD"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="708" y="-332"/>
+        </scene>
+        <!--Tab Bar View Controller-->
+        <scene sceneID="yeF-Rv-RHe">
+            <objects>
+                <tabBarController id="IKm-2d-RVD" customClass="TabBarViewController" customModule="AngelHacksCaitlyn" customModuleProvider="target" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="WyX-N8-SvM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="upe-7U-U9X" kind="relationship" relationship="viewControllers" id="35b-dp-laH"/>
+                        <segue destination="Xwq-GT-QEj" kind="relationship" relationship="viewControllers" id="AF9-Pv-pEy"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4eK-VB-FUk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-112" y="-2"/>
+        </scene>
+    </scenes>
+</document>
