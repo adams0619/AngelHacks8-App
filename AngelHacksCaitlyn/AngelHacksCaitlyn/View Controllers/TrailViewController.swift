@@ -29,6 +29,12 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
         
     }
     
+    enum MapType: Int {
+        case Standard = 0
+        case Hybrid
+        case Satellite
+    }
+    
     @IBAction func searchBar(sender: AnyObject) {
         searchController = UISearchController(searchResultsController: nil)
         searchController.hidesNavigationBarDuringPresentation = false
@@ -38,6 +44,8 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
     }
     
     @IBOutlet weak var trailMapView: MKMapView!
+    
+    @IBOutlet weak var mapTypeControl: UISegmentedControl!
     
     
     var mapAnnoations: [PinAnnotation] = []
@@ -58,6 +66,18 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
         println(long.count)
     }
     
+    @IBAction func mapTypeChanged (sender: AnyObject) {
+        let mapType = MapType(rawValue: mapTypeControl.selectedSegmentIndex)
+        switch (mapType!) {
+                        case .Standard:
+                            self.trailMapView.mapType = MKMapType.Standard
+                        case .Hybrid:
+                            self.trailMapView.mapType = MKMapType.Hybrid
+                        case .Satellite:
+                            self.trailMapView.mapType = MKMapType.Satellite
+                        }
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,9 +131,6 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
                     }
                 }
         }
-        
-        
-        
         
         //addAnnos()
         

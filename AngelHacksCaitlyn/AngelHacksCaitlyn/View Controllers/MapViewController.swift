@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Foundation
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate {
 
@@ -26,6 +27,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
 
     var user: String?
     @IBOutlet weak var button: UIBarButtonItem!
+    
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         buttonTapped = true
@@ -176,6 +178,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
                         self.addNotes()
                     }
                 }
+                
+//                let mapType = MapType(rawValue: mapTypeSegmentedControl.selectedSegmentIndex) switch (mapType!) {
+//                case .Standard:
+//                    self.mapView.mapType = MKMapType.Standard
+//                case .Hybrid:
+//                    self.mapView.mapType = MKMapType.Hybrid
+//                case .Satellite:
+//                    self.mapView.mapType = MKMapType.Satellite
+//                }
+                
         }
         
 

@@ -30,6 +30,7 @@
 		1C2A5BEF1B5AEC4000E8D410 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2A5BEE1B5AEC4000E8D410 /* CoreLocation.framework */; };
 		1C2A5BF61B5AF3C500E8D410 /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2A5BF51B5AF3C500E8D410 /* PinAnnotation.swift */; };
 		1CC25F7A1B5BE08E000AFB97 /* FirstStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC25F791B5BE08E000AFB97 /* FirstStartViewController.swift */; };
+		1CC25F821B5C04C0000AFB97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CC25F811B5C04C0000AFB97 /* Foundation.framework */; };
 		1CE8DA3B1B5B16EE008FDC04 /* TrailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE8DA3A1B5B16EE008FDC04 /* TrailViewController.swift */; };
 		501869BD1B5B3C7A0088F362 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501869BC1B5B3C7A0088F362 /* SwiftyJSON.swift */; };
 		501869CB1B5B56C20088F362 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501869C31B5B56C20088F362 /* Alamofire.swift */; };
@@ -85,6 +86,7 @@
 		1C2A5BEE1B5AEC4000E8D410 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1C2A5BF51B5AF3C500E8D410 /* PinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
 		1CC25F791B5BE08E000AFB97 /* FirstStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstStartViewController.swift; sourceTree = "<group>"; };
+		1CC25F811B5C04C0000AFB97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1CE8DA3A1B5B16EE008FDC04 /* TrailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailViewController.swift; sourceTree = "<group>"; };
 		25B0015A37F0052633FBB9DB /* Pods-AngelHacksCaitlyn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AngelHacksCaitlyn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AngelHacksCaitlyn/Pods-AngelHacksCaitlyn.debug.xcconfig"; sourceTree = "<group>"; };
 		384331175755F61F75F0E83B /* Pods_AngelHacksCaitlyn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AngelHacksCaitlyn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CC25F821B5C04C0000AFB97 /* Foundation.framework in Frameworks */,
 				1C02A5BA1B5B357000E9E53A /* libsqlite3.dylib in Frameworks */,
 				1C02A5B81B5B356500E9E53A /* libz.dylib in Frameworks */,
 				1C02A5B61B5B355A00E9E53A /* SystemConfiguration.framework in Frameworks */,
@@ -218,6 +221,7 @@
 		1C2A5BF01B5AEC6800E8D410 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1CC25F811B5C04C0000AFB97 /* Foundation.framework */,
 				1C02A5B91B5B357000E9E53A /* libsqlite3.dylib */,
 				1C02A5B71B5B356500E9E53A /* libz.dylib */,
 				1C02A5B51B5B355A00E9E53A /* SystemConfiguration.framework */,
