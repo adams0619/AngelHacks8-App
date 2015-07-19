@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Air-pump-->
+        <!--TrailView Controller-->
         <scene sceneID="pL8-eg-GIN">
             <objects>
-                <viewController id="Xwq-GT-QEj" userLabel="Air-pump" customClass="AirPumpViewController" customModule="AngelHacksCaitlyn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Xwq-GT-QEj" userLabel="TrailView Controller" customClass="TrailViewController" customModule="AngelHacksCaitlyn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="a7J-TR-bxA"/>
                         <viewControllerLayoutGuide type="bottom" id="SUv-WR-8UM"/>
@@ -29,7 +29,7 @@
                             <constraint firstItem="YEo-Yb-Z78" firstAttribute="leading" secondItem="7LU-PG-zZ5" secondAttribute="leading" id="jyz-rR-go7"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Air Pumps" image="pump-tab" id="bvv-Ln-fEw"/>
+                    <tabBarItem key="tabBarItem" title="Air Pumps" image="trails-tab" id="bvv-Ln-fEw"/>
                     <connections>
                         <outlet property="mapView" destination="YEo-Yb-Z78" id="fSP-yr-e9L"/>
                     </connections>
@@ -120,6 +120,6 @@
     <resources>
         <image name="account-tab" width="32" height="32"/>
         <image name="bike-tab" width="32" height="32"/>
-        <image name="pump-tab" width="32" height="32"/>
+        <image name="trails-tab" width="32" height="32"/>
     </resources>
 </document>
