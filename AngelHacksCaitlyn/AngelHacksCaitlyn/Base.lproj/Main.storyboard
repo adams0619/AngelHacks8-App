@@ -74,14 +74,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="STD-ym-n8y">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="STD-ym-n8y">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
-                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kb6-4C-O1K">
-                                <rect key="frame" x="5" y="-7" width="600" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kb6-4C-O1K">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Bike Racks" id="Shs-c9-rwm">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" id="Hbg-Q9-oq0"/>
+                                        <barButtonItem key="leftBarButtonItem" image="bike-tab" id="Hbg-Q9-oq0">
+                                            <connections>
+                                                <action selector="bikeTapped:" destination="upe-7U-U9X" id="FdF-8I-GC0"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="zIg-wv-xw7">
                                             <connections>
                                                 <action selector="searchBar:" destination="upe-7U-U9X" id="4ot-cF-F5S"/>
