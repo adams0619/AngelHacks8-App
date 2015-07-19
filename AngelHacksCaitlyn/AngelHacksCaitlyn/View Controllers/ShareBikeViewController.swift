@@ -379,6 +379,8 @@ class ShareBikeViewController: UIViewController, CLLocationManagerDelegate, UISe
         }
         
     }
+    
+    
     //
 }
 

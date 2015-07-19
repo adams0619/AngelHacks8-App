@@ -78,7 +78,7 @@
                             <constraint firstItem="CoO-MW-kxk" firstAttribute="leading" secondItem="Ait-ad-SQD" secondAttribute="leadingMargin" constant="-16" id="YUS-Nq-BGb"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Share Bike" image="account-tab" id="XsK-O2-KGg" userLabel="Account"/>
+                    <tabBarItem key="tabBarItem" title="Bike Share" image="bikeshare" id="XsK-O2-KGg" userLabel="Account"/>
                     <connections>
                         <outlet property="mapView" destination="CoO-MW-kxk" id="7Vq-bt-Oiq"/>
                     </connections>
@@ -331,9 +331,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="account-tab" width="32" height="32"/>
         <image name="bike-logo" width="1056" height="543"/>
         <image name="bike-tab" width="32" height="32"/>
+        <image name="bikeshare" width="32" height="32"/>
         <image name="bridge" width="375" height="667"/>
         <image name="trails-tab" width="32" height="32"/>
     </resources>
