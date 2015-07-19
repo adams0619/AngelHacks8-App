@@ -232,6 +232,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
 
         var view: MKPinAnnotationView?
+        
+        if let annotation81 = annotation as? MKUserLocation {
+            return nil
+        }
 
         for annotation1 in mapAnnoations{
             //annotation1 = self.mapAnnoations[0]
