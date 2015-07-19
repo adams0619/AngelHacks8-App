@@ -18,7 +18,7 @@ class RestApiManager: NSObject {
     
     let baseURL = ""
     
-    let json = JSON(data: dataFromNetworking)
+    //let json = JSON(data: dataFromNetworking)
 
     
     func getRandomUser(onCompletion: (JSON) -> Void) {
