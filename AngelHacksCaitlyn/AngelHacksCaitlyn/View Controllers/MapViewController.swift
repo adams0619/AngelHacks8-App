@@ -446,13 +446,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
             i++;
             let mkView = view as! MKAnnotationView
             if view.annotation is MKUserLocation {
-                continue;
+                continue
             }
             
             // Check if current annotation is inside visible map rect, else go to next one
             let point:MKMapPoint  =  MKMapPointForCoordinate(mkView.annotation.coordinate);
             if (!MKMapRectContainsPoint(self.mapView.visibleMapRect, point)) {
-                continue;
+                continue
             }
             
             let endFrame:CGRect = mkView.frame;
@@ -461,8 +461,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
             mkView.frame = CGRectMake(mkView.frame.origin.x, mkView.frame.origin.y - self.view.frame.size.height, mkView.frame.size.width, mkView.frame.size.height);
             
             // Animate drop
-            let delay = 0.03 * Double(i)
-            UIView.animateWithDuration(0.5, delay: delay, options: UIViewAnimationOptions.CurveEaseIn, animations:{() in
+            let delay = 0.01 * Double(i)
+            UIView.animateWithDuration(0.2, delay: delay, options: UIViewAnimationOptions.CurveEaseIn, animations:{() in
                 mkView.frame = endFrame
                 // Animate squash
                 }, completion:{(Bool) in
