@@ -121,7 +121,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         }
         
         //println("Started to REST API CAll")
-        let url = "https://mobileraj.cloudant.com/sfbikedata/_all_docs?include_docs=true&limit=70"
+        let url = "https://mobileraj.cloudant.com/sfbikedata/_all_docs?include_docs=true&limit=450"
         request(.GET, url, parameters: nil)
             .responseJSON { (request, response, data, error) -> Void in
                 if(error != nil) {
@@ -437,4 +437,45 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
                 
     }
 //
+    
+    func mapView(mapView: MKMapView!, didAddAnnotationViews views: [AnyObject]!) {
+        println("didAddAnnotationViews()")
+        
+        var i = -1;
+        for view in views {
+            i++;
+            let mkView = view as! MKAnnotationView
+            if view.annotation is MKUserLocation {
+                continue;
+            }
+            
+            // Check if current annotation is inside visible map rect, else go to next one
+            let point:MKMapPoint  =  MKMapPointForCoordinate(mkView.annotation.coordinate);
+            if (!MKMapRectContainsPoint(self.mapView.visibleMapRect, point)) {
+                continue;
+            }
+            
+            let endFrame:CGRect = mkView.frame;
+            
+            // Move annotation out of view
+            mkView.frame = CGRectMake(mkView.frame.origin.x, mkView.frame.origin.y - self.view.frame.size.height, mkView.frame.size.width, mkView.frame.size.height);
+            
+            // Animate drop
+            let delay = 0.03 * Double(i)
+            UIView.animateWithDuration(0.5, delay: delay, options: UIViewAnimationOptions.CurveEaseIn, animations:{() in
+                mkView.frame = endFrame
+                // Animate squash
+                }, completion:{(Bool) in
+                    UIView.animateWithDuration(0.05, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations:{() in
+                        mkView.transform = CGAffineTransformMakeScale(1.0, 0.6)
+                        
+                        }, completion: {(Bool) in
+                            UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations:{() in
+                                mkView.transform = CGAffineTransformIdentity
+                                }, completion: nil)
+                    })
+                    
+            })
+        }
+    }
 }

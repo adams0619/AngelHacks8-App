@@ -11,6 +11,7 @@ import MapKit
 import CoreLocation
 
 class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate {
+
     
     var image: UIImage?
     
@@ -76,6 +77,8 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
                         case .Satellite:
                             self.trailMapView.mapType = MKMapType.Satellite
                         }
+        
+        
 
     }
     
@@ -214,7 +217,7 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
         
         while p < q {
             var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: lat[p], longitude: long[p])
-            var annotation = PinAnnotation(coordinate: coordinate, title: title, color: MKPinAnnotationColor.Red
+            var annotation = PinAnnotation(coordinate: coordinate, title: title, color: MKPinAnnotationColor.Green
             )
             
             mapAnnoations.append(annotation)
@@ -298,6 +301,8 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
             self.trailMapView.centerCoordinate = self.pointAnnotation.coordinate
             //self.mapView.addAnnotation(self.pinAnnotationView.annotation)
         }
+        
+        
     }
     
     
@@ -368,5 +373,7 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
     //        // Pass the selected object to the new view controller.
     //    }
     //    */
-    //  
+    // 
+    
+    
 }

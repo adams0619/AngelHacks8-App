@@ -29,6 +29,7 @@
 		1C2A5BED1B5AEC3A00E8D410 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2A5BEC1B5AEC3A00E8D410 /* MapKit.framework */; };
 		1C2A5BEF1B5AEC4000E8D410 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2A5BEE1B5AEC4000E8D410 /* CoreLocation.framework */; };
 		1C2A5BF61B5AF3C500E8D410 /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2A5BF51B5AF3C500E8D410 /* PinAnnotation.swift */; };
+		1C307F761B5C2B4600B13063 /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C307F751B5C2B4600B13063 /* CustomPointAnnotation.swift */; };
 		1CC25F7A1B5BE08E000AFB97 /* FirstStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC25F791B5BE08E000AFB97 /* FirstStartViewController.swift */; };
 		1CC25F821B5C04C0000AFB97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CC25F811B5C04C0000AFB97 /* Foundation.framework */; };
 		1CC25F861B5C192D000AFB97 /* ShareBikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC25F851B5C192D000AFB97 /* ShareBikeViewController.swift */; };
@@ -86,6 +87,7 @@
 		1C2A5BEC1B5AEC3A00E8D410 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1C2A5BEE1B5AEC4000E8D410 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1C2A5BF51B5AF3C500E8D410 /* PinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
+		1C307F751B5C2B4600B13063 /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
 		1CC25F791B5BE08E000AFB97 /* FirstStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstStartViewController.swift; sourceTree = "<group>"; };
 		1CC25F811B5C04C0000AFB97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1CC25F851B5C192D000AFB97 /* ShareBikeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareBikeViewController.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				50F292F51B5B00770081D8B7 /* MapViewController.swift */,
+				1C307F751B5C2B4600B13063 /* CustomPointAnnotation.swift */,
 				50F292F61B5B00770081D8B7 /* TabBarViewController.swift */,
 				1CE8DA3A1B5B16EE008FDC04 /* TrailViewController.swift */,
 				1CC25F791B5BE08E000AFB97 /* FirstStartViewController.swift */,
@@ -448,6 +451,7 @@
 				501869D11B5B56C20088F362 /* Upload.swift in Sources */,
 				501869CC1B5B56C20088F362 /* Download.swift in Sources */,
 				501869CF1B5B56C20088F362 /* Request.swift in Sources */,
+				1C307F761B5C2B4600B13063 /* CustomPointAnnotation.swift in Sources */,
 				50F292F81B5B00770081D8B7 /* TabBarViewController.swift in Sources */,
 				50331B991B5BC6D200E36012 /* CustomButton.swift in Sources */,
 				1CE8DA3B1B5B16EE008FDC04 /* TrailViewController.swift in Sources */,
