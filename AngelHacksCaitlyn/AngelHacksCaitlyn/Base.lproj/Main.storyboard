@@ -54,10 +54,10 @@
             </objects>
             <point key="canvasLocation" x="602" y="224"/>
         </scene>
-        <!--Account-->
+        <!--Share Bike View Controller-->
         <scene sceneID="PX6-Ip-21x">
             <objects>
-                <viewController id="D57-WU-JHg" userLabel="Account" sceneMemberID="viewController">
+                <viewController id="D57-WU-JHg" userLabel="Share Bike View Controller" customClass="ShareBikeViewController" customModule="AngelHacksCaitlyn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="huc-AM-YxZ"/>
                         <viewControllerLayoutGuide type="bottom" id="Zee-lx-jbz"/>
@@ -66,13 +66,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xjf-ji-BsW">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </imageView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CoO-MW-kxk">
+                                <rect key="frame" x="-34" y="28" width="600" height="600"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="CoO-MW-kxk" secondAttribute="trailing" constant="-16" id="A43-Qk-C2r"/>
+                            <constraint firstItem="CoO-MW-kxk" firstAttribute="top" secondItem="huc-AM-YxZ" secondAttribute="bottom" id="Agb-mU-OwP"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="CoO-MW-kxk" secondAttribute="bottom" id="B6h-bW-fJ5"/>
+                            <constraint firstItem="CoO-MW-kxk" firstAttribute="leading" secondItem="Ait-ad-SQD" secondAttribute="leadingMargin" constant="-16" id="YUS-Nq-BGb"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" image="account-tab" id="XsK-O2-KGg" userLabel="Account"/>
+                    <connections>
+                        <outlet property="mapView" destination="CoO-MW-kxk" id="7Vq-bt-Oiq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8gT-3K-8Hw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -154,7 +163,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.84999999999999987" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sli-FX-BNR">
+                            <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sli-FX-BNR">
                                 <rect key="frame" x="-26" y="28" width="707" height="639"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CXX-Tn-hXx">
@@ -164,7 +173,7 @@
                                         </constraints>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kpn-iO-WJI">
                                         <rect key="frame" x="84" y="294" width="267" height="17"/>
@@ -242,7 +251,7 @@
                                     <constraint firstAttribute="height" constant="58" id="vZb-dr-7CM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Sign Up">
+                                <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>

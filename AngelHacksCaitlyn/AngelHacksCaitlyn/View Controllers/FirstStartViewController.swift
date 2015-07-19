@@ -17,8 +17,15 @@ class FirstStartViewController: UIViewController {
     }
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        username.attributedPlaceholder = NSAttributedString(string:"Username",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+        password.attributedPlaceholder = NSAttributedString(string:"Password",
+            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
 
         // Do any additional setup after loading the view.
     }

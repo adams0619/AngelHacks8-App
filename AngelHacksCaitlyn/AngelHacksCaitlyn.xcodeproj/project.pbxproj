@@ -31,6 +31,7 @@
 		1C2A5BF61B5AF3C500E8D410 /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2A5BF51B5AF3C500E8D410 /* PinAnnotation.swift */; };
 		1CC25F7A1B5BE08E000AFB97 /* FirstStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC25F791B5BE08E000AFB97 /* FirstStartViewController.swift */; };
 		1CC25F821B5C04C0000AFB97 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CC25F811B5C04C0000AFB97 /* Foundation.framework */; };
+		1CC25F861B5C192D000AFB97 /* ShareBikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC25F851B5C192D000AFB97 /* ShareBikeViewController.swift */; };
 		1CE8DA3B1B5B16EE008FDC04 /* TrailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE8DA3A1B5B16EE008FDC04 /* TrailViewController.swift */; };
 		501869BD1B5B3C7A0088F362 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501869BC1B5B3C7A0088F362 /* SwiftyJSON.swift */; };
 		501869CB1B5B56C20088F362 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501869C31B5B56C20088F362 /* Alamofire.swift */; };
@@ -87,6 +88,7 @@
 		1C2A5BF51B5AF3C500E8D410 /* PinAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
 		1CC25F791B5BE08E000AFB97 /* FirstStartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstStartViewController.swift; sourceTree = "<group>"; };
 		1CC25F811B5C04C0000AFB97 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1CC25F851B5C192D000AFB97 /* ShareBikeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareBikeViewController.swift; sourceTree = "<group>"; };
 		1CE8DA3A1B5B16EE008FDC04 /* TrailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrailViewController.swift; sourceTree = "<group>"; };
 		25B0015A37F0052633FBB9DB /* Pods-AngelHacksCaitlyn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AngelHacksCaitlyn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AngelHacksCaitlyn/Pods-AngelHacksCaitlyn.debug.xcconfig"; sourceTree = "<group>"; };
 		384331175755F61F75F0E83B /* Pods_AngelHacksCaitlyn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AngelHacksCaitlyn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,6 +280,7 @@
 				50F292F61B5B00770081D8B7 /* TabBarViewController.swift */,
 				1CE8DA3A1B5B16EE008FDC04 /* TrailViewController.swift */,
 				1CC25F791B5BE08E000AFB97 /* FirstStartViewController.swift */,
+				1CC25F851B5C192D000AFB97 /* ShareBikeViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				50A4924B1B5B218A0027B2F8 /* Api.swift in Sources */,
 				501869CE1B5B56C20088F362 /* ParameterEncoding.swift in Sources */,
 				1C2A5BF61B5AF3C500E8D410 /* PinAnnotation.swift in Sources */,
+				1CC25F861B5C192D000AFB97 /* ShareBikeViewController.swift in Sources */,
 				50F292F71B5B00770081D8B7 /* MapViewController.swift in Sources */,
 				501869BD1B5B3C7A0088F362 /* SwiftyJSON.swift in Sources */,
 				1C2A5BC91B5AE96600E8D410 /* AppDelegate.swift in Sources */,

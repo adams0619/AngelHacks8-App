@@ -121,7 +121,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         }
         
         //println("Started to REST API CAll")
-        let url = "https://mobileraj.cloudant.com/sfbikedata/_all_docs?include_docs=true&limit=700"
+        let url = "https://mobileraj.cloudant.com/sfbikedata/_all_docs?include_docs=true&limit=70"
         request(.GET, url, parameters: nil)
             .responseJSON { (request, response, data, error) -> Void in
                 if(error != nil) {
@@ -437,19 +437,4 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
                 
     }
 //
-}
-
-extension String {
-    
-    subscript (i: Int) -> Character {
-        return self[advance(self.startIndex, i)]
-    }
-    
-    subscript (i: Int) -> String {
-        return String(self[i] as Character)
-    }
-    
-    subscript (r: Range<Int>) -> String {
-        return substringWithRange(Range(start: advance(startIndex, r.startIndex), end: advance(startIndex, r.endIndex)))
-    }
 }

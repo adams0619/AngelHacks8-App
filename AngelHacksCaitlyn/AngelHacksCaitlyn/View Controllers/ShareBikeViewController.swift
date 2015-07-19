@@ -9,8 +9,9 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Foundation
 
-class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate {
+class ShareBikeViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate {
     
     var image: UIImage?
     
@@ -22,18 +23,48 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
     var pinAnnotationView:MKPinAnnotationView!
     var annotation:MKAnnotation!
     
+    var buttonTapped: Bool = false
     
-    @IBAction func bikeTapped(sender: AnyObject) {
-        var bike: PinAnnotation = PinAnnotation(coordinate: coord!, title: "my bike", color: MKPinAnnotationColor.Green)
-        self.trailMapView.addAnnotation(bike)
+    var user: String?
+    @IBOutlet weak var button: UIBarButtonItem!
+    
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        buttonTapped = true
+        if let ident = identifier {
+            if ident == "toLogin" {
+                if buttonTapped == true {
+                    
+                    var bike: PinAnnotation = PinAnnotation(coordinate: coord!, title: "my bike", color: MKPinAnnotationColor.Green)
+                    self.mapAnnoations.append(bike)
+                    self.mapView.addAnnotation(bike)
+                    
+                    return true
+                }
+            }
+        }
+        
+        return false
         
     }
     
-    enum MapType: Int {
-        case Standard = 0
-        case Hybrid
-        case Satellite
+    
+    
+    @IBAction func bikeTapped(sender: AnyObject) {
+        
+        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //        let firstStart = storyboard.instantiateViewControllerWithIdentifier("first") as! FirstStartViewController
+        //         self.presentViewController(firstStart, animated: true, completion: nil)
+        
+        //buttonTapped = true
+        
+        //        var bike: PinAnnotation = PinAnnotation(coordinate: coord!, title: "my bike", color: MKPinAnnotationColor.Green)
+        //        self.mapAnnoations.append(bike)
+        //        self.mapView.addAnnotation(bike)
+        
+        
     }
+    
     
     @IBAction func searchBar(sender: AnyObject) {
         searchController = UISearchController(searchResultsController: nil)
@@ -42,10 +73,7 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
         presentViewController(searchController, animated: true, completion: nil)
         
     }
-    
-    @IBOutlet weak var trailMapView: MKMapView!
-    
-    @IBOutlet weak var mapTypeControl: UISegmentedControl!
+    @IBOutlet weak var mapView: MKMapView!
     
     
     var mapAnnoations: [PinAnnotation] = []
@@ -66,42 +94,33 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
         println(long.count)
     }
     
-    @IBAction func mapTypeChanged (sender: AnyObject) {
-        let mapType = MapType(rawValue: mapTypeControl.selectedSegmentIndex)
-        switch (mapType!) {
-                        case .Standard:
-                            self.trailMapView.mapType = MKMapType.Standard
-                        case .Hybrid:
-                            self.trailMapView.mapType = MKMapType.Hybrid
-                        case .Satellite:
-                            self.trailMapView.mapType = MKMapType.Satellite
-                        }
-
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         locationManager.delegate = self
-        trailMapView.delegate = self
+        mapView.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
         
-        let trailsApiKey = "AQ8jkRVXUYmsh6KWpoqiS6vLtPVQp13JJfqjsnwUpXHTtKFszI"
-        let url = "https://trailapi-trailapi.p.mashape.com/?q[state_cont]=California&radius=100"
-        let manager = Manager.sharedInstance
-        // Add API key header to all requests make with this manager (i.e., the whole session)
-        manager.session.configuration.HTTPAdditionalHeaders = ["X-Mashape-Key": trailsApiKey]
+        // Make REST API Call here
+        func calculateBoundingbox(lat:Double, lon: Double, resolution: Double, width: Double, height: Double) -> [String: Double] {
+            var ret = ["left": 0.0, "bottom": 0.0, "right": 0.0, "top": 0.0]
+            let halfWDeg: Double = (width * resolution)/2
+            let halfHDeg: Double = (width * resolution)/2
+            ret["left"] = lon - halfWDeg
+            ret["bottom"] = lat - halfHDeg
+            ret["right"] = lon + halfWDeg
+            ret["top"] = lat + halfHDeg
+            return ret
+        }
         
-        let URL =  NSURL(string: url)
-        var mutableUrlRequest = NSMutableURLRequest(URL: URL!)
-        mutableUrlRequest.HTTPMethod = Method.GET.rawValue
-        mutableUrlRequest.setValue("application/json", forHTTPHeaderField:"Accept")
-        
-        
-        manager.request(mutableUrlRequest).responseJSON() { (request, response, data, error) -> Void in
+        //println("Started to REST API CAll")
+        let url = "http://www.bayareabikeshare.com/stations/json"
+        request(.GET, url, parameters: nil)
+            .responseJSON { (request, response, data, error) -> Void in
                 if(error != nil) {
                     NSLog("Error: \(error)")
                     //println(request)
@@ -110,45 +129,26 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
                 else {
                     NSLog("Success: \(url)")
                     var json = JSON(data!)
-                    let locations = json["places"]
-                    println("Json: \(locations)")
-                    if let locArray = json["places"].array {
+                    let locations = json["stationBeanList"]
+                    println("Arr: \(locations)")
+                    if let locArray = json["stationBeanList"].array {
                         for cusDict in locArray {
-                            var lat = cusDict["lat"].stringValue
-                            var long = cusDict["lon"].stringValue
+                            var lat = cusDict["latitude"].stringValue
+                            var long = cusDict["longitude"].stringValue
                             if (!lat.isEmpty) {
                                 var copyLoc = lat
                                 
                                 var tempLat: Double = (lat as NSString).doubleValue
-                                self.lat.append(tempLat)                         
+                                self.lat.append(tempLat)
                                 
                                 var tempLong: Double = (long as NSString).doubleValue
-                                self.long.append(tempLong)                                
+                                self.long.append(tempLong)
                             }
-
                         }
                         self.addNotes()
                     }
                 }
         }
-        
-        let location1 = CLLocationCoordinate2D(latitude: 37.767817, longitude: -122.432136)
-        let location2 = CLLocationCoordinate2D(latitude: 37.798305, longitude: -122.409527)
-        var locations = [CLLocation(latitude: 37.767817, longitude: -122.432136), CLLocation(latitude: 37.798305, longitude: -122.409527)]
-        
-        //addAnnos()
-        
-        
-        //getCoordinates()
-        
-        //uploadRacks()
-        
-        //        for var i=0; i < lat.count; i++ {
-        //            var coordinate = CLLocationCoordinate2D(latitude: lat[i], longitude: long[i])
-        //            coordinates.append(coordinate)
-        //        }
-        
-        
         // Do any additional setup after loading the view.
     }
     
@@ -169,12 +169,13 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
         longin = userLocation.coordinate.longitude
         
         let location = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+        coord = location
         
-        let span = MKCoordinateSpanMake(0.9, 0.9)
+        let span = MKCoordinateSpanMake(0.005, 0.005)
         
         let region = MKCoordinateRegion(center: location, span: span)
         
-        trailMapView.setRegion(region, animated: true)
+        mapView.setRegion(region, animated: true)
         
         //        for coordinate in coordinates {
         //            var annotation = PinAnnotation(coordinate: coordinate, title: title)
@@ -218,7 +219,7 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
             )
             
             mapAnnoations.append(annotation)
-            self.trailMapView.addAnnotation(annotation)
+            self.mapView.addAnnotation(annotation)
             p = p + 1
             
         }
@@ -257,10 +258,13 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
             if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView {
                 dequeuedView.annotation = annotation1
                 view = dequeuedView
-            } else {
+            } else if annotation1.title == "my bike" {
+                view?.pinColor = MKPinAnnotationColor.Green
+                
+            }else {
                 view = MKPinAnnotationView(annotation: annotation1, reuseIdentifier:identifier)
                 view!.calloutOffset = CGPoint(x: -5, y: 5)
-                //view!.pinColor = MKPinAnnotationColor.Red
+                view!.pinColor = MKPinAnnotationColor.Purple
             }
             
         }
@@ -273,9 +277,9 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
         //1
         searchBar.resignFirstResponder()
         dismissViewControllerAnimated(true, completion: nil)
-        if self.trailMapView.annotations.count != 0{
-            annotation = self.trailMapView.annotations[0] as! MKAnnotation
-            self.trailMapView.removeAnnotation(annotation)
+        if self.mapView.annotations.count != 0{
+            annotation = self.mapView.annotations[0] as! MKAnnotation
+            self.mapView.removeAnnotation(annotation)
         }
         //2
         localSearchRequest = MKLocalSearchRequest()
@@ -295,7 +299,7 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
             
             
             self.pinAnnotationView = MKPinAnnotationView(annotation: self.pointAnnotation, reuseIdentifier: nil)
-            self.trailMapView.centerCoordinate = self.pointAnnotation.coordinate
+            self.mapView.centerCoordinate = self.pointAnnotation.coordinate
             //self.mapView.addAnnotation(self.pinAnnotationView.annotation)
         }
     }
@@ -368,5 +372,27 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
     //        // Pass the selected object to the new view controller.
     //    }
     //    */
-    //  
+    @IBAction func unwindToVC(segue:UIStoryboardSegue) {
+        if(segue.identifier == "unwind"){
+            
+            
+        }
+        
+    }
+    //
+}
+
+extension String {
+    
+    subscript (i: Int) -> Character {
+        return self[advance(self.startIndex, i)]
+    }
+    
+    subscript (i: Int) -> String {
+        return String(self[i] as Character)
+    }
+    
+    subscript (r: Range<Int>) -> String {
+        return substringWithRange(Range(start: advance(startIndex, r.startIndex), end: advance(startIndex, r.endIndex)))
+    }
 }
