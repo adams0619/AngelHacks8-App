@@ -78,14 +78,36 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="STD-ym-n8y">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
+                            <navigationBar contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kb6-4C-O1K">
+                                <rect key="frame" x="5" y="-7" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Bike Racks" id="Shs-c9-rwm">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" id="Hbg-Q9-oq0"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="zIg-wv-xw7">
+                                            <connections>
+                                                <action selector="searchBar:" destination="upe-7U-U9X" id="4ot-cF-F5S"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Kb6-4C-O1K" firstAttribute="top" secondItem="eLf-sT-y4u" secondAttribute="bottom" id="A4u-zR-ERN"/>
+                            <constraint firstItem="Kb6-4C-O1K" firstAttribute="leading" secondItem="49m-SK-HEk" secondAttribute="leadingMargin" constant="-16" id="HIW-e9-k9D"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Kb6-4C-O1K" secondAttribute="trailing" constant="-16" id="JRR-93-JlW"/>
+                            <constraint firstItem="Kb6-4C-O1K" firstAttribute="top" secondItem="49m-SK-HEk" secondAttribute="topMargin" id="Lp0-wM-cFM"/>
                             <constraint firstAttribute="bottomMargin" secondItem="STD-ym-n8y" secondAttribute="bottom" id="TBQ-ig-5X9"/>
                             <constraint firstItem="STD-ym-n8y" firstAttribute="top" secondItem="49m-SK-HEk" secondAttribute="topMargin" id="fKD-0h-Af5"/>
                             <constraint firstItem="STD-ym-n8y" firstAttribute="leading" secondItem="49m-SK-HEk" secondAttribute="leadingMargin" constant="-16" id="k86-2A-XoR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="STD-ym-n8y" secondAttribute="trailing" constant="-16" id="sth-oN-NFu"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="A4u-zR-ERN"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Park/Rack" image="bike-tab" id="BaN-T7-Sg1" userLabel="Park/Rack"/>
                     <connections>

@@ -13,6 +13,23 @@ import Parse
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate {
 
+    var searchController:UISearchController!
+    var localSearchRequest:MKLocalSearchRequest!
+    var localSearch:MKLocalSearch!
+    var localSearchResponse:MKLocalSearchResponse!
+    var pointAnnotation:MKPointAnnotation!
+    var pinAnnotationView:MKPinAnnotationView!
+    var annotation:MKAnnotation!
+
+
+    
+    @IBAction func searchBar(sender: AnyObject) {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.searchBar.delegate = self
+        presentViewController(searchController, animated: true, completion: nil)
+
+    }
     @IBOutlet weak var mapView: MKMapView!
     
     
@@ -65,7 +82,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         
         let location = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
         
-        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let span = MKCoordinateSpanMake(0.005, 0.005)
         
         let region = MKCoordinateRegion(center: location, span: span)
         
@@ -78,10 +95,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
 //        }
 //        
         let postsQuery = PFQuery(className: "Rack_Loc")
+        postsQuery.limit = 500
         
         var loc = PFGeoPoint(latitude: latin!, longitude: longin!)
         
-        postsQuery.whereKey("location", nearGeoPoint: loc, withinMiles: 0.86)
+        postsQuery.whereKey("location", nearGeoPoint: loc, withinMiles: 10.0)
         //finds all posts near current locations
         
         var posts = postsQuery.findObjects()
@@ -137,6 +155,38 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
 
         
     }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar){
+        //1
+        searchBar.resignFirstResponder()
+        dismissViewControllerAnimated(true, completion: nil)
+        if self.mapView.annotations.count != 0{
+            annotation = self.mapView.annotations[0] as! MKAnnotation
+            self.mapView.removeAnnotation(annotation)
+        }
+        //2
+        localSearchRequest = MKLocalSearchRequest()
+        localSearchRequest.naturalLanguageQuery = searchBar.text
+        localSearch = MKLocalSearch(request: localSearchRequest)
+        localSearch.startWithCompletionHandler { (localSearchResponse, error) -> Void in
+            
+            if localSearchResponse == nil{
+                var alert = UIAlertView(title: nil, message: "Place not found", delegate: self, cancelButtonTitle: "Try again")
+                alert.show()
+                return
+            }
+            //3
+            self.pointAnnotation = MKPointAnnotation()
+            self.pointAnnotation.title = searchBar.text
+            self.pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: localSearchResponse.boundingRegion.center.latitude, longitude:     localSearchResponse.boundingRegion.center.longitude)
+            
+            
+            self.pinAnnotationView = MKPinAnnotationView(annotation: self.pointAnnotation, reuseIdentifier: nil)
+            self.mapView.centerCoordinate = self.pointAnnotation.coordinate
+            //self.mapView.addAnnotation(self.pinAnnotationView.annotation)
+        }
+    }
+
     
 
     override func didReceiveMemoryWarning() {
