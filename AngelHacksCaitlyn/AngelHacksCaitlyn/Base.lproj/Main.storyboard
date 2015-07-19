@@ -29,7 +29,7 @@
                             <constraint firstItem="YEo-Yb-Z78" firstAttribute="leading" secondItem="7LU-PG-zZ5" secondAttribute="leading" id="jyz-rR-go7"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Air Pumps" image="trails-tab" id="bvv-Ln-fEw"/>
+                    <tabBarItem key="tabBarItem" title="Trails" image="trails-tab" id="bvv-Ln-fEw"/>
                     <connections>
                         <outlet property="mapView" destination="YEo-Yb-Z78" id="fSP-yr-e9L"/>
                     </connections>
@@ -50,10 +50,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hTO-9f-sMN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xjf-ji-BsW">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -96,6 +95,33 @@
             </objects>
             <point key="canvasLocation" x="602" y="-454"/>
         </scene>
+        <!--FirstStart-->
+        <scene sceneID="jGz-T1-doi">
+            <objects>
+                <viewController id="WUO-9i-Lqq" userLabel="FirstStart" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="76N-hY-yk8"/>
+                        <viewControllerLayoutGuide type="bottom" id="nkc-5m-s1A"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Eve-Yq-5hg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.84999999999999987" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sli-FX-BNR">
+                                <rect key="frame" x="-26" y="-8" width="707" height="639"/>
+                                <color key="backgroundColor" red="0.27058823529411763" green="0.24313725490196078" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Launch Image" translatesAutoresizingMaskIntoConstraints="NO" id="hAG-DN-nZF">
+                                <rect key="frame" x="16" y="-100" width="610" height="636"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="StW-ia-erj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-887" y="50"/>
+        </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="yeF-Rv-RHe">
             <objects>
@@ -118,6 +144,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Launch Image" width="375" height="496"/>
         <image name="account-tab" width="32" height="32"/>
         <image name="bike-tab" width="32" height="32"/>
         <image name="trails-tab" width="32" height="32"/>

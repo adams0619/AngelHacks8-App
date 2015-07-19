@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class AirPumpViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate {
+class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     

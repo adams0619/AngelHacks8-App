@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F18848AFF4F0445FEEC4292B"
+               BlueprintIdentifier = "A7BACC8CDF773DC9B938C6D7"
                BuildableName = "Pods_AngelHacksCaitlyn.framework"
                BlueprintName = "Pods-AngelHacksCaitlyn"
                ReferencedContainer = "container:Pods.xcodeproj">

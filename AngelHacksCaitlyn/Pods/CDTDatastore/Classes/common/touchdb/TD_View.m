@@ -22,10 +22,10 @@
 #import "TDMisc.h"
 #import "TDJSON.h"
 
-#import "FMDatabase.h"
-#import "FMDatabaseAdditions.h"
-#import "FMDatabaseQueue.h"
-#import "FMResultSet.h"
+#import <FMDB/FMDatabase.h>
+#import <FMDB/FMDatabaseAdditions.h>
+#import <FMDB/FMDatabaseQueue.h>
+#import <FMDB/FMResultSet.h>
 
 #import "FMDatabase+LongLong.h"
 
@@ -104,7 +104,9 @@ static id<TDViewCompiler> sCompiler;
     _mapBlock = mapBlock;        // copied implicitly in ARC
     _reduceBlock = reduceBlock;  // copied implicitly in ARC
 
-    if (![_db open]) return NO;
+    // The DB has to be open to read/write on it. A key provider is necessary to open a DB.
+    // If the DB was created with a datastore, the following validation will always be true.
+    if (![_db isOpen]) return NO;
 
     // Update the version column in the db. This is a little weird looking because we want to
     // avoid modifying the db if the version didn't change, and because the row might not exist yet.
@@ -391,8 +393,8 @@ static id fromJSON(NSData* json)
         {
             [r close];
             if (status >= kTDStatusBadRequest)
-                CDTLogWarn(CDTTD_VIEW_CONTEXT, @"TouchDB: Failed to rebuild view '%@': %d", _name,
-                        status);
+                CDTLogWarn(CDTTD_VIEW_CONTEXT, @"TouchDB: Failed to rebuild view '%@': %@", _name,
+                        @(status));
             *rollback = (status < kTDStatusBadRequest);
         }
     }];

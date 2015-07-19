@@ -19,9 +19,10 @@
 @class TD_Attachment;
 
 @interface TD_Database ()
+
 @property (readwrite, copy) NSString* name;  // make it settable
-@property (readonly) TDBlobStore* attachmentStore;
-- (BOOL)openFMDB;
+
+- (BOOL)openFMDBWithEncryptionKeyProvider:(id<CDTEncryptionKeyProvider>)provider;
 
 /** Must be called from within a queue -inDatabase: or -inTransaction: **/
 - (SInt64)getDocNumericID:(NSString*)docID database:(FMDatabase*)db;
@@ -73,7 +74,20 @@
 #if DEBUG
 - (id)attachmentWriterForAttachment:(NSDictionary*)attachment;
 #endif
-- (BOOL)storeBlob:(NSData*)blob creatingKey:(TDBlobKey*)outKey;
+
+- (NSUInteger)blobCount;
+- (id<CDTBlobReader>)blobForKey:(TDBlobKey)key;
+- (id<CDTBlobReader>)blobForKey:(TDBlobKey)key withDatabase:(FMDatabase *)db;
+- (BOOL)storeBlob:(NSData *)blob creatingKey:(TDBlobKey *)outKey;
+- (BOOL)storeBlob:(NSData *)blob creatingKey:(TDBlobKey *)outKey withDatabase:(FMDatabase *)db;
+- (BOOL)storeBlob:(NSData *)blob
+      creatingKey:(TDBlobKey *)outKey
+            error:(NSError *__autoreleasing *)outError;
+- (BOOL)storeBlob:(NSData *)blob
+      creatingKey:(TDBlobKey *)outKey
+     withDatabase:(FMDatabase *)db
+            error:(NSError *__autoreleasing *)outError;
+
 - (TDStatus)insertAttachment:(TD_Attachment*)attachment
                  forSequence:(SequenceNumber)sequence
                   inDatabase:(FMDatabase*)db;
@@ -90,7 +104,7 @@
 @interface TD_Database (Replication_Internal)
 - (void)stopAndForgetReplicator:(TDReplicator*)repl;
 - (NSObject*)lastSequenceWithCheckpointID:(NSString*)checkpointID;
-- (BOOL)setLastSequence:(NSObject*)lastSequence withCheckpointID:(NSString*)checkpointID;
+- (void)setLastSequence:(NSObject*)lastSequence withCheckpointID:(NSString*)checkpointID;
 + (NSString*)joinQuotedStrings:(NSArray*)strings;
 @end
 

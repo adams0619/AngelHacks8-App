@@ -27,7 +27,7 @@
 #import "TDStatus.h"
 #import "CDTMutableDocumentRevision.h"
 #import "TDInternal.h"
-#import "fmdb.h"
+#import <FMDB/FMDB.h>
 #import "TD_Body.h"
 #import "CDTLogging.h"
 
@@ -35,18 +35,16 @@
 
 - (NSArray *)getConflictedDocumentIds
 {
-    if (![self.database open]) {
-        return nil;
-    }
-
-    return [self.database getConflictedDocumentIds];
+    // This property is not synthesized, it is a method that already ensures that the
+    // database is open (or return nil)
+    return (self.database ? [self.database getConflictedDocumentIds] : nil);
 }
 
 - (BOOL)resolveConflictsForDocument:(NSString *)docId
                            resolver:(NSObject<CDTConflictResolver> *)resolver
                               error:(NSError *__autoreleasing *)error
 {
-    if (![self.database open]) {
+    if (!self.database) {
         *error = TDStatusToNSError(kTDStatusException, nil);
         return NO;
     }

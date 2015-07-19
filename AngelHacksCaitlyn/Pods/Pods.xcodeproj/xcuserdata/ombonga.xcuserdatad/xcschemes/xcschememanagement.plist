@@ -4,7 +4,22 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Alamofire.xcscheme</key>
+		<key>Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>CDTDatastore.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>CocoaLumberjack.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FMDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -14,25 +29,30 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftyJSON.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>25E0F0AEF3D0FF9A663EBD748DD275FD</key>
+		<key>17FD0A558CA5EBC8548A9360A75237D2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>51FBD9FAFC250D3C0E15568547B497DC</key>
+		<key>26378AB6643C4B63F36CEB0946257215</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DD118A5533E9427D3BB230FBC54330E9</key>
+		<key>37CEB756F2B2C4A03B2EF3A2BCAD0A9D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A24A8FA81832200F43EC61D7857367D4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FC123552233B74C2EC47BBF337CB2DCC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
