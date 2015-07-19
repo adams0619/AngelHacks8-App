@@ -5,10 +5,8 @@ platform :ios, '8.0'
 
 target 'AngelHacksCaitlyn' do
 	use_frameworks!
-    #pod 'Alamofire'
+    #pod 'Alamofire', '~> 1.2'
     #pod 'SwiftyJSON', '>= 2.2'
-    pod 'Parse-iOS-SDK'
-    pod 'CDTDatastore'
 end
 
 target 'AngelHacksCaitlynTests' do

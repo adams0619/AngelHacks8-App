@@ -24,6 +24,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
 
     var posts: [PFObject]!
     
+    var view: MKPinAnnotationView?
     var locationManager = CLLocationManager()
 
     
@@ -109,9 +110,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
                 
     }
     
+    
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
-        var view: MKPinAnnotationView?
+        
 
         for annotation1 in mapAnnoations{
             
