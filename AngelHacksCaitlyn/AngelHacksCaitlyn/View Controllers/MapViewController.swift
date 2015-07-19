@@ -12,7 +12,18 @@ import CoreLocation
 import Parse
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate {
+    
+    var image: UIImage?
+    
 
+    @IBAction func bikeTapped(sender: AnyObject) {
+        
+        var bike: PinAnnotation = PinAnnotation(coordinate: coord!, title: "my bike", color: MKPinAnnotationColor.Green)
+        
+        self.mapView.addAnnotation(bike)
+        
+        
+    }
     var searchController:UISearchController!
     var localSearchRequest:MKLocalSearchRequest!
     var localSearch:MKLocalSearch!
@@ -70,6 +81,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     
     var latin: CLLocationDegrees?
     var longin: CLLocationDegrees?
+
+    var coord: CLLocationCoordinate2D?
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         
@@ -81,6 +94,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         longin = userLocation.coordinate.longitude
         
         let location = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+        
+        coord = location
         
         let span = MKCoordinateSpanMake(0.005, 0.005)
         
@@ -114,7 +129,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
                 var long1: CLLocationDegrees = loca.longitude
                 var lat1: CLLocationDegrees = loca.latitude
                 var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: lat1, longitude: long1)
-                var annotation = PinAnnotation(coordinate: coordinate, title: title)
+                var annotation = PinAnnotation(coordinate: coordinate, title: title, color: MKPinAnnotationColor.Green)
                 
                 mapAnnoations.append(annotation)
                 self.mapView.addAnnotation(annotation)
@@ -146,7 +161,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
             } else {
                 view = MKPinAnnotationView(annotation: annotation1, reuseIdentifier:identifier)
                 view!.calloutOffset = CGPoint(x: -5, y: 5)
-                view!.pinColor = MKPinAnnotationColor.Red
+                //view!.pinColor = MKPinAnnotationColor.Red
             }
         
         }
