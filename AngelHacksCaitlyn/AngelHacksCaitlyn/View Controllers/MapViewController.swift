@@ -29,6 +29,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
         getCoordinates()
         // Do any additional setup after loading the view.
     }
@@ -48,8 +49,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         mapView.setRegion(region, animated: true)
         
         locationManager.stopUpdatingLocation()
+        
                 
     }
+    
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         let annotation1 = self.mapAnnoations[0]
@@ -78,10 +81,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         var copyLoc = bikeRackLoc
         var testString = copyLoc.rangeOfString("(37")!.startIndex
         var nextTest: String = String(stringInterpolationSegment: testString)
-        var startInd: Int = nextTest.toInt()!
-        startInd + 1
-        var startCoordString = copyLoc.substringWithRange(Range <String.Index> (start: advance (copyLoc.startIndex, startInd), end: advance(testString.endIndex, startInd + 11)))
-        println(startCoordString)
+        var startInd: Int = nextTest.toInt()! + 1
+        var endInd = 0 - (count(copyLoc) - startInd) + 11
+        var newString: String = copyLoc.substringWithRange(Range<String.Index>(start: advance(copyLoc.startIndex, startInd), end: advance(copyLoc.endIndex, endInd)))
+        println(newString)
     }
 
     /*
