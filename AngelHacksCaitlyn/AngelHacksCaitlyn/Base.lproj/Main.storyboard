@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IKm-2d-RVD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WUO-9i-Lqq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -14,11 +14,11 @@
                         <viewControllerLayoutGuide type="bottom" id="SUv-WR-8UM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7LU-PG-zZ5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YEo-Yb-Z78">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -31,7 +31,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Trails" image="trails-tab" id="bvv-Ln-fEw"/>
                     <connections>
-                        <outlet property="mapView" destination="YEo-Yb-Z78" id="fSP-yr-e9L"/>
+                        <outlet property="trailMapView" destination="YEo-Yb-Z78" id="glj-Eq-geC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Jg-B5-BTm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -47,7 +47,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Zee-lx-jbz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ait-ad-SQD">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xjf-ji-BsW">
@@ -71,24 +71,24 @@
                         <viewControllerLayoutGuide type="bottom" id="1Pq-h2-p41"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="49m-SK-HEk">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="STD-ym-n8y">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kb6-4C-O1K">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Bike Racks" id="Shs-c9-rwm">
                                         <barButtonItem key="leftBarButtonItem" image="bike-tab" id="Hbg-Q9-oq0">
                                             <connections>
-                                                <action selector="bikeTapped:" destination="upe-7U-U9X" id="FdF-8I-GC0"/>
+                                                <action selector="bikeTapped:" destination="upe-7U-U9X" id="dYo-UG-fei"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="zIg-wv-xw7">
                                             <connections>
-                                                <action selector="searchBar:" destination="upe-7U-U9X" id="4ot-cF-F5S"/>
+                                                <action selector="searchBar:" destination="upe-7U-U9X" id="eFR-3s-TPt"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -130,23 +130,79 @@
                         <viewControllerLayoutGuide type="bottom" id="nkc-5m-s1A"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Eve-Yq-5hg">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view alpha="0.84999999999999987" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sli-FX-BNR">
-                                <rect key="frame" x="-26" y="-8" width="707" height="639"/>
+                                <rect key="frame" x="-26" y="28" width="707" height="639"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bridge" translatesAutoresizingMaskIntoConstraints="NO" id="oVG-Z1-bGa">
+                                        <rect key="frame" x="-29" y="0.0" width="475" height="639"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bike-logo" translatesAutoresizingMaskIntoConstraints="NO" id="jWc-v5-n7l">
+                                        <rect key="frame" x="107" y="123" width="221" height="118"/>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Cycle" translatesAutoresizingMaskIntoConstraints="NO" id="Qj9-R5-L69">
+                                        <rect key="frame" x="155" y="20" width="125" height="71"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="44"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
                                 <color key="backgroundColor" red="0.27058823529411763" green="0.24313725490196078" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Launch Image" translatesAutoresizingMaskIntoConstraints="NO" id="hAG-DN-nZF">
-                                <rect key="frame" x="16" y="-100" width="610" height="636"/>
-                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFx-vp-TDi" customClass="CustomButton" customModule="AngelHacksCaitlyn" customModuleProvider="target">
+                                <rect key="frame" x="31" y="517" width="312" height="58"/>
+                                <color key="backgroundColor" red="1" green="0.12632147375793046" blue="0.34195082421638912" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="customBorderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="roundness">
+                                        <real key="value" value="28"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="IKm-2d-RVD" kind="show" id="LdB-Kf-Uzi"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Username" translatesAutoresizingMaskIntoConstraints="NO" id="40A-xW-RwQ">
+                                <rect key="frame" x="58" y="322" width="278" height="37"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X0B-2z-zbg">
+                                <rect key="frame" x="60" y="411" width="265" height="2"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k65-RT-IyG">
+                                <rect key="frame" x="60" y="361" width="265" height="2"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Password" translatesAutoresizingMaskIntoConstraints="NO" id="8l4-DQ-5y8">
+                                <rect key="frame" x="58" y="371" width="278" height="37"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="StW-ia-erj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-887" y="50"/>
+            <point key="canvasLocation" x="-869.5" y="-2.5"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="yeF-Rv-RHe">
@@ -170,9 +226,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Launch Image" width="375" height="496"/>
         <image name="account-tab" width="32" height="32"/>
+        <image name="bike-logo" width="1056" height="543"/>
         <image name="bike-tab" width="32" height="32"/>
+        <image name="bridge" width="375" height="667"/>
         <image name="trails-tab" width="32" height="32"/>
     </resources>
 </document>

@@ -39,6 +39,7 @@
 		501869D01B5B56C20088F362 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501869C81B5B56C20088F362 /* ResponseSerialization.swift */; };
 		501869D11B5B56C20088F362 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501869C91B5B56C20088F362 /* Upload.swift */; };
 		501869D21B5B56C20088F362 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501869CA1B5B56C20088F362 /* Validation.swift */; };
+		50331B991B5BC6D200E36012 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50331B981B5BC6D200E36012 /* CustomButton.swift */; };
 		50A4924B1B5B218A0027B2F8 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A4924A1B5B218A0027B2F8 /* Api.swift */; };
 		50F292F71B5B00770081D8B7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F292F51B5B00770081D8B7 /* MapViewController.swift */; };
 		50F292F81B5B00770081D8B7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F292F61B5B00770081D8B7 /* TabBarViewController.swift */; };
@@ -94,6 +95,7 @@
 		501869C81B5B56C20088F362 /* ResponseSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseSerialization.swift; sourceTree = "<group>"; };
 		501869C91B5B56C20088F362 /* Upload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Upload.swift; sourceTree = "<group>"; };
 		501869CA1B5B56C20088F362 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		50331B981B5BC6D200E36012 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		50A4924A1B5B218A0027B2F8 /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		50F292F51B5B00770081D8B7 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		50F292F61B5B00770081D8B7 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 		50A492491B5B20890027B2F8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				50331B981B5BC6D200E36012 /* CustomButton.swift */,
 				50A4924A1B5B218A0027B2F8 /* Api.swift */,
 			);
 			path = Helpers;
@@ -436,6 +439,7 @@
 				501869CC1B5B56C20088F362 /* Download.swift in Sources */,
 				501869CF1B5B56C20088F362 /* Request.swift in Sources */,
 				50F292F81B5B00770081D8B7 /* TabBarViewController.swift in Sources */,
+				50331B991B5BC6D200E36012 /* CustomButton.swift in Sources */,
 				1CE8DA3B1B5B16EE008FDC04 /* TrailViewController.swift in Sources */,
 				501869CB1B5B56C20088F362 /* Alamofire.swift in Sources */,
 				50A4924B1B5B218A0027B2F8 /* Api.swift in Sources */,

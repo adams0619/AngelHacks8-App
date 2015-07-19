@@ -12,6 +12,8 @@ import CoreLocation
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate {
 
+    var image: UIImage?
+    
     var searchController:UISearchController!
     var localSearchRequest:MKLocalSearchRequest!
     var localSearch:MKLocalSearch!
@@ -20,6 +22,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     var pinAnnotationView:MKPinAnnotationView!
     var annotation:MKAnnotation!
 
+    
+    @IBAction func bikeTapped(sender: AnyObject) {
+        
+        var bike: PinAnnotation = PinAnnotation(coordinate: coord!, title: "my bike", color: MKPinAnnotationColor.Green)
+        self.mapView.addAnnotation(bike)
+        
+    }
+
+    
+    
 
     
     @IBAction func searchBar(sender: AnyObject) {
@@ -63,7 +75,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         
         // Make REST API Call here
         //println("Started to REST API CAll")
-        let url = "https://mobileraj.cloudant.com/sfbikedata/_all_docs?include_docs=true&limit=250"
+        let url = "https://mobileraj.cloudant.com/sfbikedata/_all_docs?include_docs=true&limit=35"
         request(.GET, url, parameters: nil)
             .responseJSON { (request, response, data, error) -> Void in
                 if(error != nil) {
@@ -145,6 +157,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     var latin: CLLocationDegrees?
     var longin: CLLocationDegrees?
     
+    var coord: CLLocationCoordinate2D?
+
+    
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         
         var userLocation : CLLocation = locations[0] as! CLLocation
@@ -200,7 +215,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         
         while p < q {
             var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: lat[p], longitude: long[p])
-            var annotation = PinAnnotation(coordinate: coordinate, title: title)
+            var annotation = PinAnnotation(coordinate: coordinate, title: title, color: MKPinAnnotationColor.Red
+            )
             
             mapAnnoations.append(annotation)
             self.mapView.addAnnotation(annotation)
@@ -227,7 +243,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
 
     }
     
-
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
 
@@ -243,18 +258,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
             if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView {
                 dequeuedView.annotation = annotation1
                 view = dequeuedView
-
-                
             } else {
                 view = MKPinAnnotationView(annotation: annotation1, reuseIdentifier:identifier)
                 view!.calloutOffset = CGPoint(x: -5, y: 5)
-                view!.pinColor = MKPinAnnotationColor.Red
+                //view!.pinColor = MKPinAnnotationColor.Red
             }
         
         }
         //println("DONE")
         return view
-
         
     }
     
