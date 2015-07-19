@@ -20,6 +20,7 @@
 #import "CDTMutableDocumentRevision.h"
 #import "CDTAttachment.h"
 #import "CDTDatastore+Attachments.h"
+#import "CDTEncryptionKeyNilProvider.h"
 #import "CDTLogging.h"
 
 #import "TD_Database.h"
@@ -29,9 +30,9 @@
 #import "TDInternal.h"
 #import "TDMisc.h"
 
-#import "FMDatabase.h"
-#import "FMDatabaseAdditions.h"
-#import "FMDatabaseQueue.h"
+#import <FMDB/FMDatabase.h>
+#import <FMDB/FMDatabaseAdditions.h>
+#import <FMDB/FMDatabaseQueue.h>
 
 #import "Version.h"
 
@@ -39,6 +40,9 @@ NSString *const CDTDatastoreChangeNotification = @"CDTDatastoreChangeNotificatio
 
 @interface CDTDatastore ()
 
+@property (nonatomic, strong, readonly) id<CDTEncryptionKeyProvider> keyProvider;
+
+@property (readonly) CDTDatastoreManager *manager;
 - (void)TDdbChanged:(NSNotification *)n;
 - (BOOL)validateBodyDictionary:(NSDictionary *)body error:(NSError *__autoreleasing *)error;
 
@@ -50,25 +54,42 @@ NSString *const CDTDatastoreChangeNotification = @"CDTDatastoreChangeNotificatio
 
 + (NSString *)versionString { return @CLOUDANT_SYNC_VERSION; }
 
-- (id)initWithDatabase:(TD_Database *)database
+- (instancetype)initWithManager:(CDTDatastoreManager *)manager database:(TD_Database *)database
 {
+    CDTEncryptionKeyNilProvider *provider = [CDTEncryptionKeyNilProvider provider];
+    
+    return [self initWithManager:manager database:database encryptionKeyProvider:provider];
+}
+
+// Public init method defined in CDTDatastore+EncryptionKey.h
+- (instancetype)initWithManager:(CDTDatastoreManager *)manager
+					   database:(TD_Database *)database
+          encryptionKeyProvider:(id<CDTEncryptionKeyProvider>)provider
+{
+    NSParameterAssert(manager);
+    Assert(provider, @"Key provider is mandatory. Supply a CDTNilEncryptionKeyProvider instead.");
+
     self = [super init];
     if (self) {
-        _database = database;
-        if (![_database open]) {
-            return nil;
+        if (![database openWithEncryptionKeyProvider:provider]) {
+            self = nil;
+        } else {
+            _manager = manager;
+            _database = database;
+            _keyProvider = provider;
+            
+            NSString *dir = [[database path] stringByDeletingLastPathComponent];
+            NSString *name = [database name];
+            _extensionsDir = [dir
+                stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_extensions", name]];
+
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(TDdbChanged:)
+                                                         name:TD_DatabaseChangeNotification
+                                                       object:database];
         }
-
-        NSString *dir = [[database path] stringByDeletingLastPathComponent];
-        NSString *name = [database name];
-        _extensionsDir =
-            [dir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_extensions", name]];
-
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(TDdbChanged:)
-                                                     name:TD_DatabaseChangeNotification
-                                                   object:_database];
     }
+    
     return self;
 }
 
@@ -130,7 +151,7 @@ NSString *const CDTDatastoreChangeNotification = @"CDTDatastoreChangeNotificatio
     }
 
     if (nil != nUserInfo[@"source"]) {
-        userInfo[@"winner"] = nUserInfo[@"source"];
+        userInfo[@"source"] = nUserInfo[@"source"];
     }
 
     [[NSNotificationCenter defaultCenter] postNotificationName:CDTDatastoreChangeNotification
@@ -149,6 +170,9 @@ NSString *const CDTDatastoreChangeNotification = @"CDTDatastoreChangeNotificatio
 }
 
 - (NSString *)name { return self.database.name; }
+
+// Public method defined in CDTDatastore+EncryptionKey.h
+- (id<CDTEncryptionKeyProvider>)encryptionKeyProvider { return self.keyProvider; }
 
 - (CDTDocumentRevision *)getDocumentWithId:(NSString *)docId error:(NSError *__autoreleasing *)error
 {
@@ -376,6 +400,18 @@ NSString *const CDTDatastoreChangeNotification = @"CDTDatastoreChangeNotificatio
 
 - (BOOL)validateBodyDictionary:(NSDictionary *)body error:(NSError *__autoreleasing *)error
 {
+    
+    
+    //Firstly check if the document body is valid json
+    if(![NSJSONSerialization isValidJSONObject:body]){
+        //body isn't valid json, set error
+        if (error){
+            *error = TDStatusToNSError(kTDStatusBadJSON, nil);
+        }
+        
+        return NO;
+    }
+    
     // Check user hasn't provided _fields, which should be provided
     // as metadata in the CDTDocumentRevision object rather than
     // via _fields in the body dictionary.
@@ -407,7 +443,10 @@ NSString *const CDTDatastoreChangeNotification = @"CDTDatastoreChangeNotificatio
 
 #pragma mark Helper methods
 
-- (BOOL)ensureDatabaseOpen { return [_database open]; }
+- (BOOL)ensureDatabaseOpen
+{
+    return [_database openWithEncryptionKeyProvider:self.keyProvider];
+}
 
 #pragma mark fromRevision API methods
 

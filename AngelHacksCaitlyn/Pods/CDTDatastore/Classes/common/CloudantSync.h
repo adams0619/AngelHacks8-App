@@ -16,18 +16,23 @@
 #import <Foundation/Foundation.h>
 
 #import "CDTDatastoreManager.h"
+
 #import "CDTDatastore.h"
 #import "CDTDatastore+Attachments.h"
+
+#import "CDTDatastore+Query.h"
+#import "CDTQResultSet.h"
+
 #import "CDTDocumentRevision.h"
 #import "CDTMutableDocumentRevision.h"
 #import "CDTDocumentBody.h"
+
 #import "CDTAttachment.h"
+
+#import "CDTFetchChanges.h"
 
 #import "CDTReplicator.h"
 #import "CDTPushReplication.h"
 #import "CDTPullReplication.h"
 #import "CDTReplicatorFactory.h"
 #import "CDTReplicatorDelegate.h"
-
-#import "CDTIndexManager.h"
-#import "CDTIndexer.h"

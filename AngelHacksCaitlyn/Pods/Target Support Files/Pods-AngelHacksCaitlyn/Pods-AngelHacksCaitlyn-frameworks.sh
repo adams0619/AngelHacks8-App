@@ -52,10 +52,14 @@ code_sign_if_enabled() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework 'Pods-AngelHacksCaitlyn/Alamofire.framework'
-  install_framework 'Pods-AngelHacksCaitlyn/SwiftyJSON.framework'
+  install_framework 'Pods-AngelHacksCaitlyn/Bolts.framework'
+  install_framework 'Pods-AngelHacksCaitlyn/CDTDatastore.framework'
+  install_framework 'Pods-AngelHacksCaitlyn/CocoaLumberjack.framework'
+  install_framework 'Pods-AngelHacksCaitlyn/FMDB.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework 'Pods-AngelHacksCaitlyn/Alamofire.framework'
-  install_framework 'Pods-AngelHacksCaitlyn/SwiftyJSON.framework'
+  install_framework 'Pods-AngelHacksCaitlyn/Bolts.framework'
+  install_framework 'Pods-AngelHacksCaitlyn/CDTDatastore.framework'
+  install_framework 'Pods-AngelHacksCaitlyn/CocoaLumberjack.framework'
+  install_framework 'Pods-AngelHacksCaitlyn/FMDB.framework'
 fi

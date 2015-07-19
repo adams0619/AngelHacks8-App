@@ -21,9 +21,9 @@
 #import "TDJSON.h"
 #import "MYBlockUtils.h"
 
-#import "FMDatabase.h"
-#import "FMDatabaseAdditions.h"
-#import "FMDatabaseQueue.h"
+#import <FMDB/FMDatabase.h>
+#import <FMDB/FMDatabaseAdditions.h>
+#import <FMDB/FMDatabaseQueue.h>
 
 #define kActiveReplicatorCleanupDelay 10.0
 
@@ -86,8 +86,12 @@
     }
 }
 
-- (BOOL)setLastSequence:(NSObject*)lastSequence withCheckpointID:(NSString *)checkpointID
+- (void)setLastSequence:(NSObject*)lastSequence withCheckpointID:(NSString *)checkpointID
 {
+    // nothing to save so return early
+    if (lastSequence == nil) {
+        return;
+    }
     __block BOOL result;
     id lastSequenceJson;
     // write the sequence as a json dict of {"seq": <data>}
@@ -98,7 +102,6 @@
                                    @"last_sequence) VALUES (?, -1, ?)",
                                    checkpointID, lastSequenceJson];
     }];
-    return result;
 }
 
 + (NSString *)joinQuotedStrings:(NSArray *)strings

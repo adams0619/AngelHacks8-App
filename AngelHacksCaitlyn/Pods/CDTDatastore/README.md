@@ -193,8 +193,13 @@ if let err = error {
 
 Read more in [the CRUD document](https://github.com/cloudant/CDTDatastore/blob/master/doc/crud.md).
 
-You will also be able to subscribe for notifications of changes in the database, which
-is described in [the events documentation for Android](https://github.com/cloudant/sync-android/blob/master/doc/events.md). The implementation is still in-flux on iOS.
+You can subscribe for notifications of changes in the database, which
+is described in 
+[the events documentation](https://github.com/cloudant/cdtdatastore/blob/master/doc/events.md). 
+It's still a bit raw right now:
+
+- You receive a notification for all new revisions in replication (which can be more
+  than one per updated document).
 
 ### Replicating Data Between Many Devices
 
@@ -239,18 +244,18 @@ the appropriate indexes are set up, querying is as follows:
 
 ```objc
 NSDictionary *query = @{
-    @"name": @"John",       // name equals John
-    @"age": @{@"min": @25}  // age greater than 25
+    @"name": @"John",         // name equals John
+    @"age": @{ @"$gt" : @25}  // age greater than 25
 };
-CDTQueryResult *result = [indexManager queryWithDictionary:query
-                                                     error:nil];
-
-for(CDTDocumentRevision *revision in result) {
+CDTQResultSet *result = [datastore find:query];
+[result enumerateObjectsUsingBlock:^(CDTDocumentRevision *rev, NSUInteger idx, BOOL *stop) {
     // do something
-}
+}];
 ```
 
-See [Index and Querying Data](https://github.com/cloudant/CDTDatastore/blob/master/doc/index-query.md).
+See [Index and Querying Data](https://github.com/cloudant/CDTDatastore/blob/master/doc/query.md).
+
+As of version 0.16.0 the indexing and querying code has been re-written and has more features than the previous implementation.  For details about migrating to a 0.16.0+ indexing and query version from a previous version see [Index and Querying Migration](https://github.com/cloudant/CDTDatastore/blob/master/doc/query-migration.md).
 
 ### Conflicts
 

@@ -26,9 +26,9 @@
 #import "TDMisc.h"
 #import "Test.h"
 
-#import "FMDatabase.h"
-#import "FMDatabaseAdditions.h"
-#import "FMDatabaseQueue.h"
+#import <FMDB/FMDatabase.h>
+#import <FMDB/FMDatabaseAdditions.h>
+#import <FMDB/FMDatabaseQueue.h>
 
 #import "CDTLogging.h"
 
@@ -401,7 +401,7 @@ NSString* const TD_DatabaseChangeNotification = @"TD_DatabaseChange";
     //// PART II: In which we prepare for insertion...
 
     // Get the attachments:
-    NSDictionary* attachments = [self attachmentsFromRevision:rev status:&status];
+    NSDictionary* attachments = [self attachmentsFromRevision:rev inDatabase:db status:&status];
     if (!attachments) {
         *outStatus = status;
         return nil;
@@ -641,7 +641,7 @@ NSString* const TD_DatabaseChangeNotification = @"TD_DatabaseChange";
                         // the latest local revision (this is to copy attachments from):
                         TDStatus status;
                         NSDictionary* attachments =
-                            [strongSelf attachmentsFromRevision:rev status:&status];
+                            [strongSelf attachmentsFromRevision:rev inDatabase:db status:&status];
                         if (attachments)
                             status = [strongSelf processAttachments:attachments
                                                         forRevision:rev
@@ -727,7 +727,7 @@ NSString* const TD_DatabaseChangeNotification = @"TD_DatabaseChange";
     CDTLogInfo(CDTDATASTORE_LOG_CONTEXT, @"Closing and re-opening database...");
     [_fmdbQueue close];
 
-    if (![self openFMDB]) return kTDStatusDBError;
+    if (![self openFMDBWithEncryptionKeyProvider:_keyProviderToOpenDB]) return kTDStatusDBError;
 
     CDTLogInfo(CDTDATASTORE_LOG_CONTEXT, @"...Finished database compaction.");
     return result;
