@@ -149,7 +149,7 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
         
         let location = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
         
-        let span = MKCoordinateSpanMake(0.005, 0.005)
+        let span = MKCoordinateSpanMake(0.1, 0.1)
         
         let region = MKCoordinateRegion(center: location, span: span)
         

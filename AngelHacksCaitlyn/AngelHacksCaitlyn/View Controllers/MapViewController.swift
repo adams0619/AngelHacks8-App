@@ -21,13 +21,46 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     var pointAnnotation:MKPointAnnotation!
     var pinAnnotationView:MKPinAnnotationView!
     var annotation:MKAnnotation!
+    
+    var buttonTapped: Bool = false
 
+    var user: String?
+    @IBOutlet weak var button: UIBarButtonItem!
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        buttonTapped = true
+        if let ident = identifier {
+            if ident == "toLogin" {
+                if buttonTapped == true {
+                    
+                    var bike: PinAnnotation = PinAnnotation(coordinate: coord!, title: "my bike", color: MKPinAnnotationColor.Green)
+                    self.mapAnnoations.append(bike)
+                    self.mapView.addAnnotation(bike)
+                    
+                    return true
+                }
+            }
+        }
+        
+        return false
+        
+    }
+    
+    
     
     @IBAction func bikeTapped(sender: AnyObject) {
         
-        var bike: PinAnnotation = PinAnnotation(coordinate: coord!, title: "my bike", color: MKPinAnnotationColor.Green)
-        self.mapView.addAnnotation(bike)
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let firstStart = storyboard.instantiateViewControllerWithIdentifier("first") as! FirstStartViewController
+//         self.presentViewController(firstStart, animated: true, completion: nil)
+
+        //buttonTapped = true
         
+//        var bike: PinAnnotation = PinAnnotation(coordinate: coord!, title: "my bike", color: MKPinAnnotationColor.Green)
+//        self.mapAnnoations.append(bike)
+//        self.mapView.addAnnotation(bike)
+        
+
     }
 
     
@@ -74,8 +107,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         
         
         // Make REST API Call here
+        func calculateBoundingbox(lat:Double, lon: Double, resolution: Double, width: Double, height: Double) -> [String: Double] {
+            var ret = ["left": 0.0, "bottom": 0.0, "right": 0.0, "top": 0.0]
+            let halfWDeg: Double = (width * resolution)/2
+            let halfHDeg: Double = (width * resolution)/2
+            ret["left"] = lon - halfWDeg
+            ret["bottom"] = lat - halfHDeg
+            ret["right"] = lon + halfWDeg
+            ret["top"] = lat + halfHDeg
+            return ret
+        }
+        
         //println("Started to REST API CAll")
-        let url = "https://mobileraj.cloudant.com/sfbikedata/_all_docs?include_docs=true&limit=35"
+        let url = "https://mobileraj.cloudant.com/sfbikedata/_all_docs?include_docs=true&limit=700"
         request(.GET, url, parameters: nil)
             .responseJSON { (request, response, data, error) -> Void in
                 if(error != nil) {
@@ -170,6 +214,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         longin = userLocation.coordinate.longitude
         
         let location = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+        coord = location
         
         let span = MKCoordinateSpanMake(0.005, 0.005)
         
@@ -258,10 +303,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
             if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView {
                 dequeuedView.annotation = annotation1
                 view = dequeuedView
-            } else {
+            } else if annotation1.title == "my bike" {
+                view?.pinColor = MKPinAnnotationColor.Green
+                
+            }else {
                 view = MKPinAnnotationView(annotation: annotation1, reuseIdentifier:identifier)
                 view!.calloutOffset = CGPoint(x: -5, y: 5)
-                //view!.pinColor = MKPinAnnotationColor.Red
+                view!.pinColor = MKPinAnnotationColor.Red
             }
         
         }
@@ -369,7 +417,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
 //        // Pass the selected object to the new view controller.
 //    }
 //    */
-//  
+    @IBAction func unwindToVC(segue:UIStoryboardSegue) {
+        if(segue.identifier == "unwind"){
+        
+        
+        }
+                
+    }
+//
 }
 
 extension String {
