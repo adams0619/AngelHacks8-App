@@ -4,25 +4,35 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-AngelHacksCaitlyn-Alamofire.xcscheme</key>
+		<key>Alamofire.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-AngelHacksCaitlyn.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>945555E65D11C31F4BD98B4F</key>
+		<key>25E0F0AEF3D0FF9A663EBD748DD275FD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9B5E827063D315797FD4E8C6</key>
+		<key>51FBD9FAFC250D3C0E15568547B497DC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DD118A5533E9427D3BB230FBC54330E9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
