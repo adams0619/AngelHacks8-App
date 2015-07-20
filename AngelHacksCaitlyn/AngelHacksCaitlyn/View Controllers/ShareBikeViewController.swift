@@ -249,11 +249,10 @@ class ShareBikeViewController: UIViewController, CLLocationManagerDelegate, UISe
         
         var view: MKPinAnnotationView?
         
-        if let annotation81 = annotation as? MKUserLocation {
-            return nil
-        }
-        
         for annotation1 in mapAnnoations{
+            if annotation1 is MKUserLocation {
+                continue
+            }
             //annotation1 = self.mapAnnoations[0]
             let identifier = "pin"
             if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView {
@@ -420,6 +419,8 @@ class ShareBikeViewController: UIViewController, CLLocationManagerDelegate, UISe
         }
         
     }
+    
+    
     //
 }
 

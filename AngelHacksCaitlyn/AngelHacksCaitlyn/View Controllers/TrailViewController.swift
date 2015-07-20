@@ -219,8 +219,7 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
         
         while p < q {
             var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: lat[p], longitude: long[p])
-            var annotation = PinAnnotation(coordinate: coordinate, title: title, color: MKPinAnnotationColor.Green
-            )
+            var annotation = PinAnnotation(coordinate: coordinate, title: title, color: MKPinAnnotationColor.Green)
             
             mapAnnoations.append(annotation)
             self.trailMapView.addAnnotation(annotation)
@@ -265,7 +264,7 @@ class TrailViewController: UIViewController, CLLocationManagerDelegate, UISearch
             } else {
                 view = MKPinAnnotationView(annotation: annotation1, reuseIdentifier:identifier)
                 view!.calloutOffset = CGPoint(x: -5, y: 5)
-                //view!.pinColor = MKPinAnnotationColor.Red
+                view!.pinColor = MKPinAnnotationColor.Green
             }
             
         }
