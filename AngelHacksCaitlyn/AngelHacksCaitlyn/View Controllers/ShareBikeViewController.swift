@@ -90,8 +90,8 @@ class ShareBikeViewController: UIViewController, CLLocationManagerDelegate, UISe
     }
     
     func finishedDownload () {
-        println(lat.count)
-        println(long.count)
+//        println(lat.count)
+//        println(long.count)
     }
     
     
@@ -104,6 +104,7 @@ class ShareBikeViewController: UIViewController, CLLocationManagerDelegate, UISe
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
+         self.mapView.showsUserLocation = true;
         
         // Make REST API Call here
         func calculateBoundingbox(lat:Double, lon: Double, resolution: Double, width: Double, height: Double) -> [String: Double] {
@@ -272,6 +273,46 @@ class ShareBikeViewController: UIViewController, CLLocationManagerDelegate, UISe
         return view
         
     }
+    
+    func mapView(mapView: MKMapView!, didAddAnnotationViews views: [AnyObject]!) {
+        var i = -1;
+        for view in views {
+            i++;
+            let mkView = view as! MKAnnotationView
+            if view.annotation is MKUserLocation {
+                continue;
+            }
+            
+            // Check if current annotation is inside visible map rect, else go to next one
+            let point:MKMapPoint  =  MKMapPointForCoordinate(mkView.annotation.coordinate);
+            if (!MKMapRectContainsPoint(self.mapView.visibleMapRect, point)) {
+                continue;
+            }
+            
+            let endFrame:CGRect = mkView.frame;
+            
+            // Move annotation out of view
+            mkView.frame = CGRectMake(mkView.frame.origin.x, mkView.frame.origin.y - self.view.frame.size.height, mkView.frame.size.width, mkView.frame.size.height);
+            
+            // Animate drop
+            let delay = 0.03 * Double(i)
+            UIView.animateWithDuration(0.5, delay: delay, options: UIViewAnimationOptions.CurveEaseIn, animations:{() in
+                mkView.frame = endFrame
+                // Animate squash
+                }, completion:{(Bool) in
+                    UIView.animateWithDuration(0.05, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations:{() in
+                        mkView.transform = CGAffineTransformMakeScale(1.0, 0.6)
+                        
+                        }, completion: {(Bool) in
+                            UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations:{() in
+                                mkView.transform = CGAffineTransformIdentity
+                                }, completion: nil)
+                    })
+                    
+            })
+        }
+    }
+
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar){
         //1

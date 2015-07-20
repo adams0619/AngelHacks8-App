@@ -14,15 +14,30 @@
                         <viewControllerLayoutGuide type="bottom" id="SUv-WR-8UM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7LU-PG-zZ5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YEo-Yb-Z78">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </mapView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3gI-0d-rPB">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="View Trails" id="ED1-md-Fet">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="7FG-Lv-NGI">
+                                            <connections>
+                                                <action selector="searchBar:" destination="Xwq-GT-QEj" id="QfV-ip-6sn"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UcE-Uj-hvQ">
-                                <rect key="frame" x="16" y="20" width="568" height="29"/>
+                                <rect key="frame" x="16" y="77" width="343" height="29"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="MsE-AG-e57"/>
+                                </constraints>
                                 <segments>
                                     <segment title="Map"/>
                                     <segment title="Hybrid"/>
@@ -35,16 +50,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="UcE-Uj-hvQ" secondAttribute="trailing" id="0nh-Xn-68D"/>
-                            <constraint firstAttribute="bottom" secondItem="YEo-Yb-Z78" secondAttribute="bottom" id="J2N-KH-Ae8"/>
-                            <constraint firstAttribute="trailing" secondItem="YEo-Yb-Z78" secondAttribute="trailing" id="QUB-lg-462"/>
-                            <constraint firstItem="UcE-Uj-hvQ" firstAttribute="top" secondItem="a7J-TR-bxA" secondAttribute="bottom" id="SZS-0b-cVl"/>
-                            <constraint firstItem="YEo-Yb-Z78" firstAttribute="top" secondItem="7LU-PG-zZ5" secondAttribute="top" id="at4-5L-VWx"/>
-                            <constraint firstItem="YEo-Yb-Z78" firstAttribute="leading" secondItem="7LU-PG-zZ5" secondAttribute="leading" id="jyz-rR-go7"/>
-                            <constraint firstItem="UcE-Uj-hvQ" firstAttribute="leading" secondItem="7LU-PG-zZ5" secondAttribute="leadingMargin" id="yNY-DL-7CW"/>
+                            <constraint firstItem="YEo-Yb-Z78" firstAttribute="top" secondItem="3gI-0d-rPB" secondAttribute="bottom" id="9pV-c9-myF"/>
+                            <constraint firstItem="YEo-Yb-Z78" firstAttribute="trailing" secondItem="3gI-0d-rPB" secondAttribute="trailing" id="Edh-Z0-xGS"/>
+                            <constraint firstItem="3gI-0d-rPB" firstAttribute="top" secondItem="a7J-TR-bxA" secondAttribute="bottom" id="FJA-Kf-YQg"/>
+                            <constraint firstItem="SUv-WR-8UM" firstAttribute="top" secondItem="UcE-Uj-hvQ" secondAttribute="bottom" constant="513" id="O6s-7M-hD7"/>
+                            <constraint firstItem="3gI-0d-rPB" firstAttribute="centerX" secondItem="UcE-Uj-hvQ" secondAttribute="centerX" id="V7C-aB-BIQ"/>
+                            <constraint firstItem="YEo-Yb-Z78" firstAttribute="leading" secondItem="3gI-0d-rPB" secondAttribute="leading" id="gOv-n4-xv4"/>
+                            <constraint firstItem="UcE-Uj-hvQ" firstAttribute="leading" secondItem="7LU-PG-zZ5" secondAttribute="leadingMargin" id="rIO-LD-BfS"/>
+                            <constraint firstItem="YEo-Yb-Z78" firstAttribute="leading" secondItem="7LU-PG-zZ5" secondAttribute="leading" id="sYo-lW-GlA"/>
+                            <constraint firstAttribute="bottom" secondItem="YEo-Yb-Z78" secondAttribute="bottom" id="sc2-50-oQ0"/>
+                            <constraint firstAttribute="trailing" secondItem="YEo-Yb-Z78" secondAttribute="trailing" id="tZS-9Z-NCS"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Trails" image="trails-tab" id="bvv-Ln-fEw"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="mapTypeControl" destination="UcE-Uj-hvQ" id="5f6-Y9-AEB"/>
                         <outlet property="trailMapView" destination="YEo-Yb-Z78" id="glj-Eq-geC"/>
@@ -52,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Jg-B5-BTm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="602" y="224"/>
+            <point key="canvasLocation" x="601.5" y="223.5"/>
         </scene>
         <!--Share Bike View Controller-->
         <scene sceneID="PX6-Ip-21x">
@@ -66,19 +85,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CoO-MW-kxk">
-                                <rect key="frame" x="-34" y="28" width="600" height="600"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CoO-MW-kxk">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                             </mapView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cYP-m1-pjf">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Bike Share" id="0nS-0s-Wcc">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="Kbj-Yv-Kme">
+                                            <connections>
+                                                <action selector="searchBar:" destination="D57-WU-JHg" id="Ac4-BC-RUX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cYP-m1-pjf" firstAttribute="top" secondItem="CoO-MW-kxk" secondAttribute="top" id="7Xu-or-rby"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CoO-MW-kxk" secondAttribute="trailing" constant="-16" id="A43-Qk-C2r"/>
                             <constraint firstItem="CoO-MW-kxk" firstAttribute="top" secondItem="huc-AM-YxZ" secondAttribute="bottom" id="Agb-mU-OwP"/>
                             <constraint firstAttribute="bottomMargin" secondItem="CoO-MW-kxk" secondAttribute="bottom" id="B6h-bW-fJ5"/>
                             <constraint firstItem="CoO-MW-kxk" firstAttribute="leading" secondItem="Ait-ad-SQD" secondAttribute="leadingMargin" constant="-16" id="YUS-Nq-BGb"/>
+                            <constraint firstItem="cYP-m1-pjf" firstAttribute="leading" secondItem="CoO-MW-kxk" secondAttribute="leading" id="hxX-u0-5pt"/>
+                            <constraint firstItem="cYP-m1-pjf" firstAttribute="trailing" secondItem="CoO-MW-kxk" secondAttribute="trailing" id="kdl-uL-0Yo"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Share Bike" image="account-tab" id="XsK-O2-KGg" userLabel="Account"/>
+                    <tabBarItem key="tabBarItem" title="Bike Share" image="Bike-Share" id="XsK-O2-KGg" userLabel="Account"/>
                     <connections>
                         <outlet property="mapView" destination="CoO-MW-kxk" id="7Vq-bt-Oiq"/>
                     </connections>
@@ -331,7 +365,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="account-tab" width="32" height="32"/>
+        <image name="Bike-Share" width="32" height="32"/>
         <image name="bike-logo" width="1056" height="543"/>
         <image name="bike-tab" width="32" height="32"/>
         <image name="bridge" width="375" height="667"/>

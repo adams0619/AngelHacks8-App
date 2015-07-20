@@ -43,15 +43,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
                 }
             }
         }
-        
         return false
-        
     }
     
     
     
     @IBAction func bikeTapped(sender: AnyObject) {
-        
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        let firstStart = storyboard.instantiateViewControllerWithIdentifier("first") as! FirstStartViewController
 //         self.presentViewController(firstStart, animated: true, completion: nil)
@@ -61,8 +58,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
 //        var bike: PinAnnotation = PinAnnotation(coordinate: coord!, title: "my bike", color: MKPinAnnotationColor.Green)
 //        self.mapAnnoations.append(bike)
 //        self.mapView.addAnnotation(bike)
-        
-
     }
 
     
@@ -93,8 +88,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     }
     
     func finishedDownload () {
-        println(lat.count)
-        println(long.count)
+//        println(lat.count)
+//        println(long.count)
+    }
+    
+    // Make REST API Call here
+    func calculateBoundingbox(lat:Double, lon: Double, resolution: Double, width: Double, height: Double) -> [String: Double] {
+        var ret = ["left": 0.0, "bottom": 0.0, "right": 0.0, "top": 0.0]
+        let halfWDeg: Double = (width * resolution)/2
+        let halfHDeg: Double = (width * resolution)/2
+        ret["left"] = lon - halfWDeg
+        ret["bottom"] = lat - halfHDeg
+        ret["right"] = lon + halfWDeg
+        ret["top"] = lat + halfHDeg
+        return ret
     }
 
     
@@ -108,20 +115,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         locationManager.startUpdatingLocation()
         
         
-        // Make REST API Call here
-        func calculateBoundingbox(lat:Double, lon: Double, resolution: Double, width: Double, height: Double) -> [String: Double] {
-            var ret = ["left": 0.0, "bottom": 0.0, "right": 0.0, "top": 0.0]
-            let halfWDeg: Double = (width * resolution)/2
-            let halfHDeg: Double = (width * resolution)/2
-            ret["left"] = lon - halfWDeg
-            ret["bottom"] = lat - halfHDeg
-            ret["right"] = lon + halfWDeg
-            ret["top"] = lat + halfHDeg
-            return ret
-        }
-        
         //println("Started to REST API CAll")
-        let url = "https://mobileraj.cloudant.com/sfbikedata/_all_docs?include_docs=true&limit=450"
+        let url = "https://mobileraj.cloudant.com/sfbikedata/_all_docs?include_docs=true&limit=250"
         request(.GET, url, parameters: nil)
             .responseJSON { (request, response, data, error) -> Void in
                 if(error != nil) {
@@ -263,7 +258,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         var p: Int = 0
         
         var q: Int = self.lat.count
-        println("lat.count = \(self.lat.count)")
+//        println("lat.count = \(self.lat.count)")
         
 //        for coord in lat {
 //            q += 1
@@ -312,13 +307,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         for annotation1 in mapAnnoations{
             //annotation1 = self.mapAnnoations[0]
             let identifier = "pin"
+            var newAnnotation = annotation1
             if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView {
                 dequeuedView.annotation = annotation1
                 view = dequeuedView
+                view?.pinColor = MKPinAnnotationColor.Red
             } else if annotation1.title == "my bike" {
                 view?.pinColor = MKPinAnnotationColor.Green
+                annotation1.title == "My Bike"
                 
-            }else {
+            } else {
                 view = MKPinAnnotationView(annotation: annotation1, reuseIdentifier:identifier)
                 view!.calloutOffset = CGPoint(x: -5, y: 5)
                 view!.pinColor = MKPinAnnotationColor.Red
@@ -439,7 +437,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
 //
     
     func mapView(mapView: MKMapView!, didAddAnnotationViews views: [AnyObject]!) {
-        println("didAddAnnotationViews()")
+//        println("didAddAnnotationViews()")
+        var bounds = UIScreen.mainScreen().bounds
+        var width = (bounds.size.width / 1.0)
+        var height = (bounds.size.height / 1.0)
+        
+        
+       var sub = calculateBoundingbox(Double(self.latin!), lon: Double(self.longin!), resolution: 640, width: 200, height: Double(height))
+        println("bb box: \(sub)")
+        
+        // Current distance of the boudning view
+//        MKMapRect mRect = mapView.visibleMapRect;
+//        MKMapPoint eastMapPoint = MKMapPointMake(MKMapRectGetMinX(mRect), MKMapRectGetMidY(mRect));
+//        MKMapPoint westMapPoint = MKMapPointMake(MKMapRectGetMaxX(mRect), MKMapRectGetMidY(mRect));
+//        CLLocationDistance distance = MKMetersBetweenMapPoints(eastMapPoint, westMapPoint);
+
+        
+        // Region
+//        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(request.center, distance, distance);
+//        CLLocationCoordinate2D northWestCorner, southEastCorner;
+//        northWestCorner.latitude  = request.center.latitude  + (region.span.latitudeDelta  / 2.0);
+//        northWestCorner.longitude = request.center.longitude - (region.span.longitudeDelta / 2.0);
+//        southEastCorner.latitude  = request.center.latitude  - (region.span.latitudeDelta  / 2.0);
+//        southEastCorner.longitude = request.center.longitude + (region.span.longitudeDelta / 2.0);
         
         var i = -1;
         for view in views {
