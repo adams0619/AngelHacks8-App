@@ -1,4 +1,27 @@
-//
+/*
+The MIT License (MIT)
+
+Copyright (c) 2015 Adams, Jevin, Caitlyn, Sara
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+
 //  MapViewController.swift
 //  AngelHacksCaitlyn
 //
@@ -110,13 +133,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         
         locationManager.delegate = self
         mapView.delegate = self
+        
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
+        self.mapView.showsUserLocation = true;
         
-        //println("Started to REST API CAll")
-        let url = "https://mobileraj.cloudant.com/sfbikedata/_all_docs?include_docs=true&limit=250"
+        // This calls our REST API containing the bike rack locations. 
+        // Change the limit below (0-2520) in order tocba ge the amount of bike racks returned
+        let url = "https://mobileraj.cloudant.com/sfbikedata/_all_docs?include_docs=true&limit=350"
         request(.GET, url, parameters: nil)
             .responseJSON { (request, response, data, error) -> Void in
                 if(error != nil) {
@@ -170,27 +196,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
                             //self.i++
                             
                         }
-                        self.addNotes()
+                        self.addPinToMap()
                     }
                 }
                 
-//                let mapType = MapType(rawValue: mapTypeSegmentedControl.selectedSegmentIndex) switch (mapType!) {
-//                case .Standard:
-//                    self.mapView.mapType = MKMapType.Standard
-//                case .Hybrid:
-//                    self.mapView.mapType = MKMapType.Hybrid
-//                case .Satellite:
-//                    self.mapView.mapType = MKMapType.Satellite
-//                }
-                
         }
-        
-
-        
-        
         //addAnnos()
 
-        
         //getCoordinates()
 
         //uploadRacks()
@@ -253,7 +265,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
 //                var loca = post.objectForKey("location")! as! PFGeoPoint
     }
     
-    func addNotes () {
+    func addPinToMap () {
         var i = 0
         var p: Int = 0
         
@@ -297,10 +309,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-
+        
         var view: MKPinAnnotationView?
         
-        if let annotation81 = annotation as? MKUserLocation {
+        if let annotation1 = annotation as? MKUserLocation {
             return nil
         }
 
@@ -312,9 +324,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
                 dequeuedView.annotation = annotation1
                 view = dequeuedView
                 view?.pinColor = MKPinAnnotationColor.Red
-            } else if annotation1.title == "my bike" {
-                view?.pinColor = MKPinAnnotationColor.Green
-                annotation1.title == "My Bike"
+                // TODO: Change pin color for my bike 
+                if annotation1.title == "my bike" {
+                    view?.pinColor = MKPinAnnotationColor.Green
+                    dequeuedView.pinColor = MKPinAnnotationColor.Green
+                    annotation1.title == "My Bike"
+                }
                 
             } else {
                 view = MKPinAnnotationView(annotation: annotation1, reuseIdentifier:identifier)
@@ -443,8 +458,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         var height = (bounds.size.height / 1.0)
         
         
-       var sub = calculateBoundingbox(Double(self.latin!), lon: Double(self.longin!), resolution: 640, width: 200, height: Double(height))
-        println("bb box: \(sub)")
+//       var sub = calculateBoundingbox(Double(self.latin!), lon: Double(self.longin!), resolution: 640, width: 200, height: Double(height))
+//        println("bb box: \(sub)")
         
         // Current distance of the boudning view
 //        MKMapRect mRect = mapView.visibleMapRect;
