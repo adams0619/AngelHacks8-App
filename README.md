@@ -15,7 +15,8 @@ Tab-bar icons and button images found from [icons8.com](https://icons8.com/web-a
 
 ### Screenshots
 
-[Home Page](https://github.com/adams0619/AngelHacks8-App/blob/master/AngelHacksCaitlyn/AngelHacksCaitlyn/Screenshots/iOS%20Simulator%20Screen%20Shot%20Jul%2021%2C%202015%2C%202.00.16%20PM.png)![](https://github.com/adams0619/AngelHacks8-App/blob/master/AngelHacksCaitlyn/AngelHacksCaitlyn/Screenshots/iOS%20Simulator%20Screen%20Shot%20Jul%2021%2C%202015%2C%202.00.16%20PM.png)
+[Home Page](https://github.com/adams0619/AngelHacks8-App/blob/master/AngelHacksCaitlyn/AngelHacksCaitlyn/Screenshots/iOS%20Simulator%20Screen%20Shot%20Jul%2021%2C%202015%2C%202.00.16%20PM.png)
+![](https://github.com/adams0619/AngelHacks8-App/blob/master/AngelHacksCaitlyn/AngelHacksCaitlyn/Screenshots/iOS%20Simulator%20Screen%20Shot%20Jul%2021%2C%202015%2C%202.00.16%20PM.png)
 
 [Trails](https://github.com/adams0619/AngelHacks8-App/blob/master/AngelHacksCaitlyn/AngelHacksCaitlyn/Screenshots/iOS%20Simulator%20Screen%20Shot%20Jul%2021%2C%202015%2C%202.00.38%20PM.png)
 ![](https://github.com/adams0619/AngelHacks8-App/blob/master/AngelHacksCaitlyn/AngelHacksCaitlyn/Screenshots/iOS%20Simulator%20Screen%20Shot%20Jul%2021%2C%202015%2C%202.00.38%20PM.png)
