@@ -24,5 +24,31 @@ Tab-bar icons and button images found from [icons8.com](https://icons8.com/web-a
 [Citi Bike-Share](https://github.com/adams0619/AngelHacks8-App/blob/master/AngelHacksCaitlyn/AngelHacksCaitlyn/Screenshots/iOS%20Simulator%20Screen%20Shot%20Jul%2021%2C%202015%2C%202.00.53%20PM.png)
 ![](https://github.com/adams0619/AngelHacks8-App/blob/master/AngelHacksCaitlyn/AngelHacksCaitlyn/Screenshots/iOS%20Simulator%20Screen%20Shot%20Jul%2021%2C%202015%2C%202.00.53%20PM.png)
 
-[Potential-Login Screen](https://github.com/adams0619/AngelHacks8-App/blob/master/AngelHacksCaitlyn/AngelHacksCaitlyn/Screenshots/iOS%20Simulator%20Screen%20Shot%20Jul%2021%2C%202015%2C%202.00.53%20PM.png)
-![](https://github.com/adams0619/AngelHacks8-App/blob/master/AngelHacksCaitlyn/AngelHacksCaitlyn/Screenshots/iOS%20Simulator%20Screen%20Shot%20Jul%2021%2C%202015%2C%202.00.53%20PM.png)
+[Potential-Login Screen](https://raw.githubusercontent.com/adams0619/AngelHacks8-App/master/AngelHacksCaitlyn/AngelHacksCaitlyn/Screenshots/iOS%20Simulator%20Screen%20Shot%20Jul%2021%2C%202015%2C%202.30.30%20PM.png)
+![](https://raw.githubusercontent.com/adams0619/AngelHacks8-App/master/AngelHacksCaitlyn/AngelHacksCaitlyn/Screenshots/iOS%20Simulator%20Screen%20Shot%20Jul%2021%2C%202015%2C%202.30.30%20PM.png)
+
+
+### License
+```
+The MIT License (MIT)
+
+Copyright (c) 2015 (Adams Ombonga, Jevin Sindu, Caitlyn Chen and Sara Subbannna)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
